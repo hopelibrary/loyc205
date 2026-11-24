@@ -696,7 +696,8 @@ en:{tab:"About the project",kicker:"LOYC 205 · Introduction to Sustainability �
   "It is like Netflix, but hopeful. It gathers documentaries, films and series about people already building a different future.",
   "You're going to watch TV anyway, so might as well watch something that inspires you."]},
  {h:"What it taught me",b:[
-  "In my case, learning about solutions has been the biggest cure for eco-anxiety, and it has inspired me to be part of the solution as well. « If you think we can’t change the world, it just means you’re not one of those that will » - Jacques Fresco"]}
+  "In my case, learning about solutions has been the biggest cure for eco-anxiety, and it has inspired me to be part of the solution as well.",
+  {q:"If you think we can’t change the world, it just means you’re not one of those that will.",by:"Jacque Fresco"}]}
  ],
  final:"We are not defending nature. We are nature defending itself.",
  explore:"Explore the library",refsH:"References"},
@@ -743,7 +744,7 @@ function renderAbout(){
   <article class="s-body gut">
     ${A.sections.map((c,i)=>`<section class="s-ch"><div class="s-ch-h">${sunMark(i,n)}<h2>${esc(c.h)}</h2></div>
       ${(c.terms||[]).map(([k,d])=>`<p class="a-term"><b>${esc(k)}:</b> <span>${esc(d)}</span></p>`).join("")}
-      ${c.b.map(p=>`<p>${esc(p)}</p>`).join("")}</section>`).join("")}
+      ${c.b.map(p=>typeof p==="string"?`<p>${esc(p)}</p>`:`<blockquote class="pull"><p>${esc(p.q)}</p><cite>${esc(p.by)}</cite></blockquote>`).join("")}</section>`).join("")}
     <blockquote class="pull final"><p>${esc(A.final)}</p></blockquote>
     <div class="s-end"><button class="btn" data-go="home">${esc(A.explore)}</button></div>
     <section class="a-refs"><h2>${esc(A.refsH)}</h2><ol>${REFERENCES.map(r=>`<li>${esc(r.t)}<i>${esc(r.i)}</i>${esc(r.a)}${r.u?`<a href="${esc(r.u)}" target="_blank" rel="noopener">${esc(r.u)}</a>`:""}</li>`).join("")}</ol></section>
