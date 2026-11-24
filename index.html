@@ -743,7 +743,7 @@ function renderAbout(){
   </header>
   <article class="s-body gut">
     ${A.sections.map((c,i)=>`<section class="s-ch"><div class="s-ch-h">${sunMark(i,n)}<h2>${esc(c.h)}</h2></div>
-      ${(c.terms||[]).map(([k,d])=>`<p class="a-term"><b>${esc(k)}:</b> ${esc(d)}</p>`).join("")}
+      ${(c.terms||[]).map(([k,d])=>`<p class="a-term"><b>${esc(k)}:</b> <span>${esc(d)}</span></p>`).join("")}
       ${c.b.map(p=>`<p>${esc(p)}</p>`).join("")}</section>`).join("")}
     <blockquote class="pull final"><p>${esc(A.final)}</p></blockquote>
     <div class="s-end"><button class="btn" data-go="home">${esc(A.explore)}</button></div>
