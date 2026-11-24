@@ -1,0 +1,1054 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+
+<title>Hope Library</title>
+<meta name="description" content="People are already building the future. A library of hopeful documentaries, series and films.">
+<meta property="og:title" content="Hope Library">
+<meta property="og:description" content="People are already building the future.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a streaming platform. Sticky nav, a full-bleed billboard of one editor's pick, then horizontal rows of 16:9 tiles; tiles open a detail sheet. */
+:root{
+  --ground:#EDEFE4; --surface:#F9FAF3; --ink:#1B2921; --muted:#5B695E; --line:#D2D8C7;
+  --moss:#2E5A45; --moss-soft:#D5E3D3; --terra:#B4553A; --terra-soft:#F0D9CC;
+  --gold:#A87C1C; --gold-soft:#F1E3BF; --teal:#2D6B70; --teal-soft:#D2E4E2;
+  --sprout:#6C8E45; --sprout-soft:#E0EAD0; --clay-soft:#EADCCB;
+  --band:#23463A; --band-surface:#2C5445; --on-band:#F2F4EA; --on-band-muted:#BFD0C3;
+  --scrim:rgba(12,18,10,.82); --scrim-soft:rgba(12,18,10,.0);
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"Newsreader",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --gutter-l:max(16px,env(safe-area-inset-left,0px));
+  --gutter-r:max(16px,env(safe-area-inset-right,0px));
+  --pad:clamp(16px,4vw,56px);
+  --tile:clamp(210px,24vw,300px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --ground:#111915; --surface:#18231D; --ink:#E6ECE2; --muted:#9CAB9F; --line:#2A3830;
+  --moss:#7DB897; --moss-soft:#1E3328; --terra:#E28A67; --terra-soft:#3A2419;
+  --gold:#E2B456; --gold-soft:#3A3018; --teal:#72B6B8; --teal-soft:#173133;
+  --sprout:#A9C97F; --sprout-soft:#243120; --clay-soft:#33281E;
+  --band:#183127; --band-surface:#20392E; --on-band:#E9EFE4; --on-band-muted:#A9BCAE;}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#111915; --surface:#18231D; --ink:#E6ECE2; --muted:#9CAB9F; --line:#2A3830;
+  --moss:#7DB897; --moss-soft:#1E3328; --terra:#E28A67; --terra-soft:#3A2419;
+  --gold:#E2B456; --gold-soft:#3A3018; --teal:#72B6B8; --teal-soft:#173133;
+  --sprout:#A9C97F; --sprout-soft:#243120; --clay-soft:#33281E;
+  --band:#183127; --band-surface:#20392E; --on-band:#E9EFE4; --on-band-muted:#A9BCAE;}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{overflow-x:clip}
+body{background:var(--ground);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.5;margin:0;padding:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--ground)}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--terra);outline-offset:2px}
+.gut{padding-left:max(var(--pad),var(--gutter-l));padding-right:max(var(--pad),var(--gutter-r))}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--ground) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding-block:10px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.brand{white-space:nowrap;font-family:var(--display);font-weight:var(--dw-bold,800);font-size:20px;letter-spacing:-.01em;display:flex;align-items:center;gap:9px;background:none;border:0;padding:0;cursor:pointer}
+.brand svg{width:26px;height:26px;flex:none}
+.tabs{display:flex;gap:4px;flex-wrap:wrap;flex:1 1 auto;min-width:0}
+.tab{white-space:nowrap;border:0;background:none;padding:6px 10px;border-radius:8px;cursor:pointer;font-family:var(--display);font-weight:var(--dw-semi,600);font-size:15px;color:var(--muted);display:inline-flex;gap:6px;align-items:baseline}
+.tab:hover{color:var(--ink)}
+.tab[aria-current="page"]{color:var(--ink);box-shadow:inset 0 -2px 0 var(--terra);border-radius:0}
+.tab .c{font-family:var(--mono);font-size:11px;font-weight:400}
+.navr{display:flex;gap:10px;align-items:center}
+.search{width:clamp(150px,20vw,240px);font:inherit;font-size:15px;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--surface)}
+.lang button{border:0;background:none;border-radius:999px;padding:3px 10px;font-family:var(--mono);font-size:12px;cursor:pointer;color:var(--muted)}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--ground)}
+
+/* billboard */
+.bill{position:relative;min-height:clamp(420px,52vw,600px);display:flex;align-items:flex-end;overflow:hidden;background:var(--band);color:var(--on-band)}
+.bill .bg{position:absolute;inset:0}
+.bill .bg .cover{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;border-radius:0;max-width:none}
+.bill::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--scrim) 0%,rgba(12,18,10,.55) 42%,var(--scrim-soft) 75%),linear-gradient(0deg,var(--ground) 0%,rgba(12,18,10,0) 22%)}
+.bill-in{position:relative;z-index:1;width:100%;padding-block:48px 64px;display:flex;flex-direction:column;gap:14px;max-width:none}
+.bill-in>*{max-width:620px}
+.bill .kick{color:var(--gold);display:flex;gap:10px;align-items:center}
+.bill .kick::before{content:"";width:22px;height:2px;background:var(--gold)}
+.bill h1{font-family:var(--display);font-weight:var(--dw-bold,800);font-size:clamp(38px,6vw,76px);line-height:.95;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.bill .meta{color:var(--on-band-muted)}
+.bill p{margin:0;font-size:clamp(17px,1.6vw,20px);line-height:1.45;color:var(--on-band)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:8px;padding:10px 18px;font-family:var(--display);font-weight:var(--dw-semi,600);font-size:16px;text-decoration:none;cursor:pointer;border:0}
+.btn.primary{background:var(--on-band);color:#17211A}
+.btn.ghost{background:rgba(242,244,234,.18);color:var(--on-band);border:1px solid rgba(242,244,234,.35)}
+.btn.solid{background:var(--ink);color:var(--ground)}
+.btn.line{background:none;border:1px solid var(--line);color:var(--ink)}
+.btn[aria-pressed="true"]{background:var(--gold-soft);color:var(--ink);border-color:var(--gold)}
+.dots{position:absolute;z-index:2;right:max(var(--pad),var(--gutter-r));bottom:30px;display:flex;gap:8px}
+.dots button{width:28px;height:4px;border-radius:2px;border:0;padding:0;background:rgba(242,244,234,.38);cursor:pointer}
+.dots button[aria-current="true"]{background:var(--on-band)}
+.tagline{font-family:var(--display);color:var(--on-band-muted);font-size:15px}
+
+/* rows */
+main{display:flex;flex-direction:column;gap:36px;padding-block:8px 56px}
+.row{display:flex;flex-direction:column;gap:12px;position:relative}
+.row-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.row-h h2{font-family:var(--display);font-weight:var(--dw-bold,800);font-size:clamp(21px,2.2vw,27px);letter-spacing:-.01em;margin:0;line-height:1.1}
+.row-h h2 em{font-style:normal;color:var(--terra)}
+.row-h p{margin:2px 0 0;color:var(--muted);font-size:15px;max-width:70ch}
+.seeall{background:none;border:0;cursor:pointer;font-family:var(--display);font-weight:var(--dw-semi,600);font-size:14px;color:var(--moss);white-space:nowrap}
+.seeall:hover{text-decoration:underline}
+.rail{position:relative}
+.scroller{display:grid;grid-auto-flow:column;grid-auto-columns:var(--tile);gap:12px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:max(var(--pad),var(--gutter-l));padding-block:6px 10px;scrollbar-width:none}
+.scroller::-webkit-scrollbar{display:none}
+.scroller>*{scroll-snap-align:start}
+.arrow{position:absolute;top:6px;bottom:10px;width:max(var(--pad),40px);border:0;cursor:pointer;z-index:3;font-size:28px;color:var(--ink);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
+.arrow.l{left:0;background:linear-gradient(90deg,var(--ground),transparent)}
+.arrow.r{right:0;background:linear-gradient(270deg,var(--ground),transparent)}
+.rail:hover .arrow,.arrow:focus-visible{opacity:1}
+.arrow[hidden]{display:none}
+@media (hover:none){.arrow{display:none}}
+.qc-row{background:var(--band);color:var(--on-band);padding-block:26px 22px}
+.qc-row .row-h h2 em{color:var(--gold)}
+.qc-row .row-h p{color:var(--on-band-muted)}
+.qc-row .seeall{color:var(--on-band)}
+.qc-row .arrow{color:var(--on-band)}
+.qc-row .arrow.l{background:linear-gradient(90deg,var(--band),transparent)}
+.qc-row .arrow.r{background:linear-gradient(270deg,var(--band),transparent)}
+
+/* eco-anxiety meter */
+.meter{display:flex;align-items:center;gap:12px;flex-basis:100%;padding-top:2px}
+.meter .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.meter .lbl.hope{color:var(--moss)}
+.meter .lbl.anx{color:var(--terra)}
+.gauge{position:relative;flex:1 1 auto;min-width:0;height:24px;--h:0}
+.gauge .track,.gauge i{position:absolute;left:0;top:50%;height:6px;margin-top:-3px;border-radius:999px}
+.gauge .track{right:0;background:linear-gradient(90deg,var(--terra),var(--gold) 50%,var(--moss));opacity:.22}
+.gauge i{width:calc(11px + (100% - 22px) * var(--h) / 100);background:linear-gradient(90deg,var(--terra),var(--gold) 50%,var(--moss));background-size:calc(100% * 100 / max(var(--h),1)) 100%;background-size:max(100%,calc((100% - 11px) * 100 / max(var(--h),1))) 100%}
+.gauge .sun{position:absolute;top:50%;left:calc(11px + (100% - 22px) * var(--h) / 100);width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:var(--surface);box-shadow:0 0 0 2px var(--gold),0 1px 5px rgba(0,0,0,.25);display:grid;place-items:center}
+.gauge .sun svg{width:16px;height:16px}
+.meter .val{font-family:var(--display);font-weight:var(--dw-semi,600);font-size:15px;white-space:nowrap;min-width:16ch;text-align:right}
+.meter .val small{font-family:var(--mono);font-size:11px;font-weight:400;color:var(--muted);margin-left:6px}
+.toast{position:fixed;z-index:40;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--ground);font-family:var(--display);font-size:15px;padding:10px 16px;border-radius:999px;box-shadow:0 6px 24px rgba(0,0,0,.25);max-width:calc(100vw - 32px);text-align:center}
+.watched-chk{position:absolute;z-index:1;top:8px;right:8px;width:24px;height:24px;border-radius:50%;background:var(--moss);color:var(--surface);display:grid;place-items:center;font-size:14px;font-weight:700;box-shadow:0 1px 4px rgba(0,0,0,.35)}
+.tile.is-watched .cover{filter:saturate(.75)}
+.btn.watch[aria-pressed="true"]{background:var(--moss);border-color:var(--moss);color:var(--surface)}
+@media (prefers-reduced-motion:no-preference){.gauge i{transition:width .9s cubic-bezier(.2,.8,.2,1)}.gauge .sun{transition:left .9s cubic-bezier(.2,.8,.2,1)}.gauge .sun.bump svg{animation:rise .9s ease}@keyframes rise{40%{transform:translateY(-3px) scale(1.15)}}.toast{animation:pop .25s ease both}@keyframes pop{from{opacity:0;transform:translate(-50%,8px)}}}
+
+/* story */
+
+#aboutview{display:flex;flex-direction:column}
+.a-open{max-width:calc(720px + 2 * var(--pad));margin:0 auto;width:100%;padding-block:56px 0;display:flex;flex-direction:column;gap:14px}
+.a-open .kick{color:var(--terra);display:flex;gap:10px;align-items:center;font-size:12px;letter-spacing:.06em}
+.a-open h1{font-family:var(--display);font-weight:var(--dw-bold,800);font-size:clamp(40px,6.5vw,80px);line-height:.95;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.a-term{margin:0;padding:14px 18px;border-left:3px solid var(--teal);background:rgba(44,110,143,.07);border-radius:0 8px 8px 0;font-size:17px;line-height:1.55;max-width:65ch}
+.a-term b{color:var(--teal)}
+.a-refs{border-top:1px solid var(--line);padding-top:28px;display:flex;flex-direction:column;gap:12px}
+.a-refs h2{font-family:var(--display);font-size:28px;margin:0}
+.a-refs ol{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+.a-refs li{padding-left:2em;text-indent:-2em;font-size:15px;line-height:1.55;overflow-wrap:anywhere}
+.a-refs a{color:var(--teal)}
+#storyview{display:flex;flex-direction:column}
+.s-open{position:relative;min-height:clamp(460px,62vw,680px);display:flex;flex-direction:column;justify-content:flex-end;background:var(--band);color:var(--on-band);overflow:hidden}
+.s-open-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none}
+.s-open::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,18,10,.88) 0%,rgba(12,18,10,.55) 45%,rgba(12,18,10,.15) 100%)}
+.s-open-in{position:relative;z-index:1;padding-block:40px 18px;display:flex;flex-direction:column;gap:14px;max-width:none}
+.s-open-in>*{max-width:760px}
+.s-open .kick{color:var(--gold);display:flex;gap:10px;align-items:center}
+.s-open .kick::before{content:"";width:22px;height:2px;background:var(--gold)}
+.s-open h1{font-family:var(--display);font-weight:var(--dw-bold,800);font-size:clamp(42px,7vw,88px);line-height:.95;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.s-dek{margin:0;font-size:clamp(18px,1.8vw,22px);line-height:1.45}
+.s-meta{color:var(--on-band-muted)}
+.s-cap{position:relative;z-index:1;color:var(--on-band-muted);font-size:10.5px;padding-block:0 16px}
+.s-body{max-width:calc(720px + 2 * var(--pad));margin:0 auto;width:100%;padding-block:40px 72px;display:flex;flex-direction:column;gap:56px}
+.s-toc{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px 16px;border-block:1px solid var(--line);padding-block:14px}
+.s-toc a{display:flex;align-items:center;gap:8px;text-decoration:none;font-family:var(--display);font-size:15px;color:var(--muted)}
+.s-toc a:hover{color:var(--ink)}
+.s-toc .sunmark{width:34px;flex:none}
+.s-ch{display:flex;flex-direction:column;gap:20px;scroll-margin-top:150px}
+.s-ch-h{display:flex;flex-direction:column;gap:6px}
+.s-ch-h .sunmark{width:64px}
+.s-ch h2{font-family:var(--display);font-weight:var(--dw-bold,800);font-size:clamp(30px,4vw,44px);line-height:1;letter-spacing:-.015em;margin:0}
+.s-ch>p{margin:0;font-size:clamp(18px,1.6vw,20.5px);line-height:1.65;max-width:65ch}
+.pull{margin:8px 0;padding:0 0 0 22px;border-left:3px solid var(--terra);display:flex;flex-direction:column;gap:10px}
+.pull p{margin:0;font-family:var(--display);font-size:clamp(23px,2.6vw,31px);line-height:1.22;text-wrap:balance}
+.pull cite{font-family:var(--mono);font-size:12px;letter-spacing:.07em;text-transform:uppercase;font-style:normal;color:var(--muted)}
+.pull.final{border:0;padding:40px 0 0;border-top:2px solid var(--ink);text-align:center;align-items:center}
+.pull.final p{font-size:clamp(30px,4.4vw,52px);line-height:1.08;max-width:22ch;color:var(--moss)}
+.s-fig{margin:4px 0;display:flex;flex-direction:column;gap:8px}
+.s-fig img{width:100%;max-width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;display:block;background:var(--moss-soft)}
+.s-fig figcaption{font-family:var(--mono);font-size:11.5px;color:var(--muted);letter-spacing:.03em}
+.s-end{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.s-end p{margin:0;color:var(--muted)}
+.s-qr{display:block;margin:24px auto 0;width:min(420px,80vw);height:auto;border-radius:4px}
+.promo{position:relative;display:flex;align-items:flex-end;width:100%;min-height:240px;padding:0;border:0;border-radius:14px;overflow:hidden;cursor:pointer;text-align:left;background:var(--band);color:var(--on-band)}
+.promo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none}
+.promo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,18,10,.88) 0%,rgba(12,18,10,.6) 50%,rgba(12,18,10,.1) 100%)}
+.promo-in{position:relative;z-index:1;display:flex;flex-direction:column;gap:8px;padding:26px clamp(18px,3vw,36px);max-width:640px;align-items:flex-start}
+.promo .kick{color:var(--gold)}
+.promo b{font-family:var(--display);font-weight:var(--dw-bold,800);font-size:clamp(28px,3.4vw,42px);line-height:1;letter-spacing:-.015em}
+.promo-sub{font-size:17px;color:var(--on-band)}
+.promo .btn{margin-top:6px}
+@media (prefers-reduced-motion:no-preference){.promo img{transition:transform .5s ease}.promo:hover img{transform:scale(1.04)}}
+
+/* tiles */
+.tile{position:relative;display:block;width:100%;padding:0;border:0;background:var(--moss-soft);border-radius:10px;overflow:hidden;cursor:pointer;text-align:left;aspect-ratio:16/9;max-width:100%}
+.tile .cover{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;border-radius:0;max-width:none}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--scrim) 0%,rgba(12,18,10,.25) 48%,var(--scrim-soft) 70%)}
+.tile .cap{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:10px 12px;color:var(--on-band);display:flex;flex-direction:column;gap:2px}
+.tile .cap b{font-family:var(--display);font-weight:var(--dw-semi,600);font-size:17px;line-height:1.12;text-wrap:balance}
+.tile .cap span{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--on-band-muted)}
+.badges{position:absolute;z-index:1;top:8px;left:8px;display:flex;gap:5px}
+.badge{font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;padding:2px 6px;border-radius:4px;background:var(--gold);color:#1B1606}
+.badge.qc{background:var(--on-band);color:#17211A}
+.saved-dot{position:absolute;z-index:1;top:8px;right:38px;color:var(--gold);font-size:16px;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+@media (prefers-reduced-motion:no-preference){
+  .tile .cover{transition:transform .35s ease}
+  .tile:hover .cover,.tile:focus-visible .cover{transform:scale(1.06)}
+  .bill .bg{animation:fadein .6s ease both}
+  @keyframes fadein{from{opacity:.4}to{opacity:1}}
+}
+
+/* grid mode */
+.gridview{display:flex;flex-direction:column;gap:18px;padding-block:28px 56px}
+.gv-h{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+.gv-h h2{font-family:var(--display);font-weight:var(--dw-bold,800);font-size:clamp(28px,3.4vw,42px);margin:0;line-height:1}
+.gv-h .n{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.back{background:none;border:1px solid var(--line);border-radius:999px;padding:4px 12px;cursor:pointer;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-family:var(--display);font-size:13px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 11px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--moss);border-color:var(--moss);color:var(--surface)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:14px}
+.empty{padding:48px 0;color:var(--muted)}
+
+/* detail sheet */
+dialog{border:0;padding:0;border-radius:16px;background:var(--surface);color:var(--ink);width:min(820px,calc(100vw - 24px));max-height:calc(100dvh - 32px);overflow:auto}
+dialog::backdrop{background:rgba(8,12,8,.7)}
+.d-hero{position:relative;aspect-ratio:16/8;max-width:100%;background:var(--band);overflow:hidden}
+.d-hero .cover{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;border-radius:0;max-width:none}
+.d-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--surface) 0%,rgba(12,18,10,.2) 45%,rgba(12,18,10,0) 70%)}
+.close{position:absolute;z-index:2;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:0;background:rgba(12,18,10,.7);color:#F2F4EA;font-size:20px;cursor:pointer;line-height:1}
+.d-body{padding:0 clamp(18px,4vw,36px) 30px;margin-top:-56px;position:relative;z-index:1;display:flex;flex-direction:column;gap:12px}
+.d-body h2{font-family:var(--display);font-weight:var(--dw-bold,800);font-size:clamp(28px,4vw,44px);line-height:1;margin:0;text-wrap:balance}
+.d-meta{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted)}
+.d-meta .t{color:var(--terra)}
+.d-by{margin:0;font-style:italic;color:var(--muted)}
+.d-hope{margin:0;font-size:19px;max-width:62ch}
+.principle{font-family:var(--mono);font-size:11px;padding:4px 9px;border-radius:999px;border:1px solid var(--gold);display:inline-flex;gap:6px;align-items:center;width:fit-content}
+.principle::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.d-btns{display:flex;gap:10px;flex-wrap:wrap}
+.d-more{border-top:1px solid var(--line);padding-top:16px;margin-top:6px;display:flex;flex-direction:column;gap:10px}
+.d-more h3{font-family:var(--display);font-weight:var(--dw-semi,600);font-size:18px;margin:0}
+.d-more .grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,170px),1fr));gap:10px}
+.d-more .tile .cap b{font-size:14px}
+
+footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--muted);font-size:15px;display:flex;flex-direction:column;gap:14px}
+footer p{margin:0;max-width:72ch}
+.credits summary{cursor:pointer;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.credits ol{columns:2 320px;column-gap:28px;font-size:13px;line-height:1.45;padding-left:20px;margin:14px 0 0}
+.credits li{break-inside:avoid;margin-bottom:6px}
+.credits a{color:var(--moss)}
+@media (max-width:520px){.meter{gap:8px}.meter .val{min-width:0}.meter .val small{display:none}}
+@media (max-width:760px){
+  .nav{gap:8px 12px}
+  .tabs{order:3;flex-basis:100%;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}
+  .navr{margin-left:auto}
+  .search{width:130px}
+  .bill{min-height:500px}
+  .dots{bottom:22px}
+}
+
+/* ===== v17 theme: sunlit stone (2026-11-17) ===== */
+:root:root:root{
+  color-scheme:light;
+  --ground:#EEF1EA; --surface:#F8F9F5; --ink:#1B2A22; --muted:#4E5D52; --line:#D2D9CB;
+  --moss:#3F7A3A; --moss-soft:#DCE8D3; --terra:#B4552F; --terra-soft:#F2DCCF;
+  --gold:#C98A2E; --gold-ink:#8A5A12; --gold-soft:#F3E4C4; --teal:#2C6E8F; --teal-soft:#D5E6EE;
+  --sprout:#6A9A3F; --sprout-soft:#E3EDD5; --clay-soft:#EADFCF;
+  --band:#1F3B2C; --band-surface:#28473A; --on-band:#F4F6EF; --on-band-muted:#C9D6C9;
+  --scrim:rgba(18,32,24,.86); --scrim-soft:rgba(18,32,24,0);
+  --glow:#2C6E8F;
+  --display:"Cormorant Garamond",Georgia,serif;
+  --body:"Inter",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --dw-bold:600; --dw-semi:600;
+}
+body{font-size:16px;line-height:1.6;background-color:var(--ground);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .32 0 0 0 0 .25 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23g)'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1440' height='900' viewBox='0 0 1440 900'%3E%3Cg fill='none' stroke='%237A8C6E' stroke-opacity='.16' stroke-width='1'%3E%3Cpath d='M-40 620C200 560 340 680 560 610S900 520 1120 600 1400 640 1500 590'/%3E%3Cpath d='M-40 660C200 600 360 720 580 650S920 560 1130 640 1400 690 1500 630'/%3E%3Cpath d='M-40 700C210 650 380 760 600 690S940 600 1140 680 1410 730 1500 670'/%3E%3Cpath d='M-40 740C220 700 400 800 620 730S960 640 1150 720 1420 770 1500 712'/%3E%3Cpath d='M-40 120C180 170 360 80 600 140S980 220 1200 150 1420 90 1500 130'/%3E%3Cpath d='M-40 80C180 130 380 40 620 100S1000 180 1210 110 1420 50 1500 90'/%3E%3Cpath d='M-40 40C190 90 400 0 640 60S1020 140 1220 70 1420 10 1500 50'/%3E%3Cpath d='M-40 360C220 330 420 420 700 370S1120 300 1500 350'/%3E%3Cpath d='M-40 400C220 370 420 460 700 410S1120 340 1500 390'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:220px 220px,1440px 900px;background-attachment:fixed,fixed}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.mono{letter-spacing:.14em}
+
+/* nav */
+.nav{background:color-mix(in srgb,var(--ground) 90%,transparent);border-bottom:1px solid var(--line)}
+.brand{font-family:var(--display);font-weight:600;font-size:25px;letter-spacing:.01em}
+.brand svg{width:28px;height:28px}
+.tab{font-family:var(--mono);font-weight:400;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:10px 10px}
+.tab[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--gold)}
+.search{border-radius:2px;background:#fff;border:1px solid var(--line);font-size:14px}
+.search::placeholder{color:var(--muted)}
+.lang{border-radius:2px;background:#fff;border-color:var(--line)}
+.lang button{border-radius:1px}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--ground)}
+
+/* meter */
+.meter .lbl{letter-spacing:.14em}
+.meter .lbl.anx{color:var(--terra)}
+.meter .lbl.hope{color:var(--moss)}
+.gauge .track{height:1px;margin-top:0;background:#B9C4B0;opacity:1}
+.gauge i{height:3px;margin-top:-1px;background:linear-gradient(90deg,var(--gold),var(--moss))}
+.gauge .sun{width:14px;height:14px;margin:-7px 0 0 -7px;background:var(--gold);box-shadow:0 0 0 3px #fff,0 0 12px 3px rgba(201,138,46,.45)}
+.gauge .sun svg{display:none}
+.meter .val{font-family:var(--display);font-size:18px;font-style:italic}
+
+/* billboard: daylight */
+.bill{background:#DCE6E0;color:var(--ink)}
+.bill .bg .cover{filter:saturate(.95) contrast(1.02)}
+.bill::after{background:linear-gradient(90deg,rgba(238,241,234,.96) 0%,rgba(238,241,234,.88) 38%,rgba(238,241,234,.35) 66%,rgba(238,241,234,0) 85%),linear-gradient(0deg,var(--ground) 0%,rgba(238,241,234,0) 24%)}
+.bill .astro{position:absolute;z-index:1;right:max(var(--pad),var(--gutter-r));top:50%;transform:translateY(-50%);width:min(40vw,480px);height:auto;pointer-events:none;opacity:.95;filter:drop-shadow(0 10px 30px rgba(27,42,34,.18))}
+.bill .kick{color:var(--teal)}
+.bill .kick::before{background:var(--teal);width:28px;height:1px}
+.bill h1{font-family:var(--display);font-weight:600;font-size:clamp(46px,6.6vw,96px);line-height:.96;letter-spacing:-.015em;color:var(--ink)}
+.bill .meta{color:var(--muted)}
+.bill p{font-size:clamp(16px,1.4vw,18px);line-height:1.7;color:#2E3D34}
+.tagline{font-family:var(--display);font-style:italic;font-size:22px;color:var(--moss)}
+.btn{border-radius:2px;font-family:var(--body);font-weight:600;font-size:15px;padding:12px 22px}
+.btn.primary{background:var(--ink);color:#F8F9F5}
+.btn.ghost{background:rgba(255,255,255,.6);border:1px solid var(--ink);color:var(--ink)}
+.btn.solid{background:var(--ink);color:#F8F9F5}
+.btn.line{border-color:#B9C4B0;color:var(--ink)}
+.btn[aria-pressed="true"]{background:var(--gold-soft);border-color:var(--gold);color:var(--ink)}
+.dots button{height:3px;width:30px;border-radius:0;background:rgba(27,42,34,.22)}
+.dots button[aria-current="true"]{background:var(--gold)}
+
+/* rows */
+main{gap:52px}
+.row-h h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,2.8vw,40px);letter-spacing:-.005em;line-height:1.02}
+.row-h h2 em{font-style:italic;color:var(--moss)}
+.row-h p{font-size:15px;color:var(--muted)}
+.row-h{border-bottom:1px solid var(--line);padding-bottom:12px}
+.seeall{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.scroller{gap:16px}
+.arrow{color:var(--ink);font-family:var(--display)}
+.qc-row{background:var(--band);color:var(--on-band);padding-block:34px 28px;position:relative;overflow:hidden}
+.qc-row::before{content:"";position:absolute;right:-180px;top:-180px;width:520px;height:520px;border-radius:50%;border:1px solid rgba(244,246,239,.18);box-shadow:0 0 0 60px rgba(244,246,239,.03);pointer-events:none}
+.qc-row .row-h{border-color:rgba(244,246,239,.2)}
+.qc-row .row-h h2 em{color:#E9B85E}
+.qc-row .seeall{color:#E9B85E}
+
+/* tiles */
+.tile{background:var(--moss-soft);border-radius:4px;box-shadow:0 1px 0 rgba(27,42,34,.06),0 0 0 1px rgba(27,42,34,.08)}
+.tile img.cover{filter:saturate(.95)}
+.tile::after{background:linear-gradient(0deg,rgba(18,32,24,.9) 0%,rgba(18,32,24,.3) 50%,rgba(18,32,24,0) 74%)}
+.tile .cap{padding:12px 14px}
+.tile .cap b{font-family:var(--display);font-weight:600;font-size:21px;line-height:1.05}
+.tile .cap span{letter-spacing:.14em;font-size:10px}
+.badge{border-radius:1px;letter-spacing:.12em;background:var(--gold);color:#1B2A22}
+.badge.qc{background:#F4F6EF;color:var(--teal)}
+.saved-dot{color:#F3C76B}
+.watched-chk{background:var(--moss);color:#fff}
+@media (prefers-reduced-motion:no-preference){
+  .tile{transition:box-shadow .3s ease,transform .3s ease}
+  .tile:hover,.tile:focus-visible{box-shadow:0 0 0 2px var(--teal),0 18px 30px -18px rgba(27,42,34,.5);transform:translateY(-3px)}
+}
+
+/* grid, chips */
+.gv-h h2{font-family:var(--display);font-weight:600;font-size:clamp(36px,4vw,56px)}
+.back,.chip{border-radius:2px;background:#fff;border-color:var(--line)}
+.chip{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:6px 11px}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#F8F9F5}
+
+/* detail sheet */
+dialog{border-radius:4px;box-shadow:0 30px 70px rgba(27,42,34,.35)}
+dialog::backdrop{background:rgba(27,42,34,.55)}
+.d-hero::after{background:linear-gradient(0deg,var(--surface) 0%,rgba(248,249,245,0) 45%)}
+.d-body h2{font-family:var(--display);font-weight:600;font-size:clamp(34px,4.4vw,54px)}
+.d-meta .t{color:var(--teal)}
+.d-by{font-family:var(--display);font-size:19px}
+.d-hope{font-family:var(--display);font-size:22px;line-height:1.45;color:#25352B}
+.principle{border-radius:1px;border-color:var(--teal);color:var(--teal);letter-spacing:.1em;text-transform:uppercase}
+.principle::before{background:var(--teal)}
+.d-more h3{font-family:var(--display);font-weight:600;font-size:24px}
+.close{background:rgba(27,42,34,.7);color:#fff;border:0}
+
+/* story */
+.s-open-img{filter:saturate(.95)}
+.s-open .kick,.promo .kick{color:#9ED0E6}
+.s-open .kick::before{background:#9ED0E6;height:1px}
+.s-open h1{font-family:var(--display);font-weight:600;font-size:clamp(48px,7.4vw,104px);line-height:.96}
+.s-ch h2{font-family:var(--display);font-weight:600;font-size:clamp(36px,4.6vw,56px)}
+.s-ch>p{font-size:clamp(17px,1.4vw,19px);line-height:1.8;color:#25352B}
+.pull{border-left:2px solid var(--gold)}
+.pull p{font-family:var(--display);font-style:italic;font-size:clamp(26px,3vw,36px);color:var(--ink)}
+.s-toc a{font-family:var(--display);font-size:18px}
+.promo{border-radius:4px}
+.promo b{font-family:var(--display);font-weight:600;font-size:clamp(34px,4vw,54px)}
+.promo .btn.primary{background:#F4F6EF;color:var(--ink)}
+.toast{font-family:var(--display);font-size:18px;font-style:italic;border-radius:2px;background:var(--ink);color:#F8F9F5}
+footer{color:var(--muted)}
+.credits a{color:var(--teal)}
+@media (max-width:900px){.bill .astro{opacity:.25;width:80vw;right:-20vw}}
+
+/* final line: big and loud, in daylight */
+.pull.final{position:relative;border:0;margin:40px 0 10px;padding:clamp(70px,10vw,140px) 0;width:min(100vw - 32px,1240px);left:50%;transform:translateX(-50%);text-align:center;align-items:center;border-block:1px solid rgba(201,138,46,.5);background:radial-gradient(ellipse at center,rgba(243,199,107,.35),rgba(238,241,234,0) 70%)}
+.pull.final p{font-family:var(--display);font-style:normal;font-weight:600;font-size:clamp(44px,8.4vw,124px);line-height:.98;letter-spacing:-.015em;max-width:15ch;color:var(--ink)}
+.pull.final p span{color:var(--moss)!important}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<header class="nav gut">
+  <button class="brand" id="home" aria-label="Hope Library home"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M3 20a10 10 0 0 1 20 0z" fill="var(--gold)"/><path d="M1 20h24M5 24h16" stroke="var(--moss)" stroke-width="2.4" stroke-linecap="round"/></svg><span>Hope Library</span></button>
+  <nav class="tabs" id="tabs" aria-label="Sections"></nav>
+  <div class="navr">
+    <input id="q" class="search" type="search" aria-label="Search">
+  </div>
+  <div class="meter" id="meter" role="meter" aria-valuemin="0" aria-valuemax="100"><span class="lbl anx" id="m-lo"></span><div class="gauge" id="m-gauge"><span class="track"></span><i></i><span class="sun" id="m-sun" aria-hidden="true"><svg viewBox="0 0 26 26"><path d="M3 20a10 10 0 0 1 20 0z" fill="var(--gold)"/><path d="M1 20h24" stroke="var(--moss)" stroke-width="2.6" stroke-linecap="round"/></svg></span></div><span class="lbl hope" id="m-hi"></span><span class="val" id="m-val" hidden></span></div>
+</header>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<div id="homeview">
+  <section class="bill" id="bill" aria-roledescription="carousel" aria-label="Featured">
+    <div class="bg" id="bill-bg"></div>
+    <div class="bill-in gut" id="bill-in"></div>
+    <div class="dots" id="dots" role="group" aria-label="Featured titles"></div>
+  </section>
+  <main id="rows"></main>
+</div>
+
+<section class="gridview gut" id="gridview" hidden></section>
+<div id="storyview" hidden></div>
+<div id="aboutview" hidden></div>
+
+<footer class="gut">
+  <p data-i="footer"></p>
+  <details class="credits"><summary data-i="credits"></summary><ol id="credits"></ol></details>
+</footer>
+
+<dialog id="detail" aria-labelledby="d-title"></dialog>
+
+<script>
+
+const ITEMS = [{"t": "doc", "n": "How to Live on Earth", "by": "Fredi Devas · presented by Benedict Cumberbatch", "y": "2026", "th": ["soil", "land", "progress"], "pick": 1, "h": "Scientists, Indigenous activists, farmers and economists show how people are already working with ecosystems. It frames a better future as within reach. In cinemas from June 2026, with a free YouTube release planned.", "u": "https://howtoliveonearth.net/", "hf": "Scientifiques, militants autochtones, agriculteurs et économistes montrent comment des gens travaillent déjà avec les écosystèmes. Le film présente un avenir meilleur comme à portée de main. En salles depuis juin 2026, avec une sortie gratuite prévue sur YouTube."}, {"t": "doc", "n": "Nitassinan", "by": "Joséphine Bacon & Kim O'Bomsawin", "y": "2026", "th": ["land", "forest"], "pick": 1, "h": "A poetic portrait of the Innu bond with Nutshimit, the inland territory of Quebec's North Shore. The film shows how language, family and land keep a people whole. In Quebec theatres since September 18, 2026.", "u": "https://cinemacinema.ca/en/films/nitassinan-2190", "hf": "Un portrait poétique du lien des Innus avec Nutshimit, le territoire intérieur de la Côte-Nord. Le film montre comment la langue, la famille et le territoire gardent un peuple entier. En salle au Québec depuis le 18 septembre 2026.", "reg": "qc", "pr": "ethics"}, {"t": "doc", "n": "Yanuni", "by": "Richard Ladkani · produced by Leonardo DiCaprio", "y": "2025", "th": ["land", "forest"], "pick": 1, "h": "Follows Juma Xipaia, the first woman chief of the Xipaya people, from the Amazon frontline against illegal gold mining to the halls of power, while she becomes a mother. The film closed the 2025 Tribeca Festival.", "u": "https://en.wikipedia.org/wiki/Yanuni", "hf": "Suit Juma Xipaia, première femme cheffe du peuple Xipaya, du front amazonien contre l'orpaillage illégal jusqu'aux lieux de pouvoir, pendant qu'elle devient mère. Le film a clôturé le festival de Tribeca 2025."}, {"t": "doc", "n": "Minimalism: A Documentary About the Important Things", "by": "Matt D'Avella · The Minimalists", "y": "2016", "th": ["simple"], "pick": 1, "h": "People who chose to own less and gained time, money and meaning. The film suggests a good life doesn't need to cost the Earth.", "u": "https://www.theminimalists.com/", "hf": "Des gens qui ont choisi de posséder moins et ont gagné du temps, de l'argent et du sens. Le film suggère qu'une bonne vie n'a pas besoin de coûter la Terre."}, {"t": "doc", "n": "The Minimalists: Less Is Now", "by": "Matt D'Avella", "y": "2021", "th": ["simple"], "h": "The follow-up to Minimalism. It looks at consumer culture and offers practical ways to step off the treadmill.", "u": "https://en.wikipedia.org/wiki/The_Minimalists", "hf": "La suite de Minimalism. Un regard sur la culture de consommation, avec des façons concrètes de descendre du tapis roulant."}, {"t": "doc", "n": "Groundswell", "by": "Josh & Rebecca Tickell", "y": "2026", "th": ["soil"], "h": "Farmers, scientists and Indigenous leaders on five continents show that living soil can feed people, store carbon and steady the climate. The film closes the trilogy that began with Kiss the Ground. It premiered at Cannes 2026.", "u": "https://www.festival-cannes.com/en/2026/groundswell-a-hopeful-documentary-on-climate-interview-with-josh-and-rebecca-tickell/", "hf": "Agriculteurs, scientifiques et leaders autochtones de cinq continents montrent qu'un sol vivant peut nourrir les gens, stocker du carbone et stabiliser le climat. Le film clôt la trilogie commencée avec Kiss the Ground. Première à Cannes en 2026."}, {"t": "doc", "n": "Kiss the Ground", "by": "Josh & Rebecca Tickell", "y": "2020", "th": ["soil"], "h": "The film that brought regenerative agriculture into the mainstream. It argues that healthy soil could be one of our biggest climate allies.", "u": "https://en.wikipedia.org/wiki/Kiss_the_Ground_(film)", "hf": "Le film qui a fait connaître l'agriculture régénératrice au grand public. Il soutient qu'un sol en santé pourrait être l'un de nos meilleurs alliés climatiques."}, {"t": "doc", "n": "Common Ground", "by": "Josh & Rebecca Tickell", "y": "2023", "th": ["soil", "land"], "h": "Farmers of every background explain why they are switching to regenerative methods, and what happens to their land, health and bank accounts when they do.", "u": "https://commongroundfilm.org/", "hf": "Des agriculteurs de tous horizons expliquent pourquoi ils passent aux méthodes régénératrices, et ce qui arrive à leur terre, leur santé et leurs finances quand ils le font."}, {"t": "doc", "n": "Tomorrow (Demain)", "by": "Cyril Dion & Mélanie Laurent", "y": "2015", "th": ["community", "econ", "energy", "soil"], "h": "A road trip through working solutions in farming, energy, economy, democracy and education. The film won the César for best documentary and sparked local initiatives across the French-speaking world.", "u": "https://en.wikipedia.org/wiki/Tomorrow_(2015_film)", "nf": "Demain", "hf": "Un road trip à travers des solutions qui fonctionnent en agriculture, énergie, économie, démocratie et éducation. Le film a remporté le César du meilleur documentaire et a lancé des initiatives locales partout dans la francophonie."}, {"t": "doc", "n": "Animal", "by": "Cyril Dion", "y": "2021", "th": ["wild", "youth"], "h": "Two teenage activists, Bella Lack and Vipulan Puvaneswaran, set out to understand why species are disappearing. They meet the people turning that around.", "u": "https://en.wikipedia.org/wiki/Animal_(2021_film)", "hf": "Deux adolescents militants, Bella Lack et Vipulan Puvaneswaran, cherchent à comprendre pourquoi les espèces disparaissent. Ils rencontrent les gens qui renversent la tendance."}, {"t": "doc", "n": "2040", "by": "Damon Gameau", "y": "2019", "th": ["vision", "energy", "city", "soil"], "h": "A father imagines the world his daughter could inherit by 2040, using only solutions that already exist today. It is a rare fully optimistic climate film.", "u": "https://whatsyour2040.com/", "hf": "Un père imagine le monde dont sa fille pourrait hériter en 2040, en n'utilisant que des solutions qui existent déjà. Un rare film climatique entièrement optimiste."}, {"t": "doc", "n": "Regenerating Australia", "by": "Damon Gameau", "y": "2022", "th": ["vision", "community"], "h": "A short film written as a 2030 news broadcast that looks back on how Australia turned itself around. Its visions came from thousands of real Australians.", "u": "https://regeneratingaustralia.com/", "hf": "Un court métrage écrit comme un bulletin de nouvelles de 2030 qui revient sur la façon dont l'Australie s'est transformée. Ses visions viennent de milliers de vrais Australiens."}, {"t": "doc", "n": "The Biggest Little Farm", "by": "John Chester", "y": "2018", "th": ["soil", "wild"], "h": "Eight years of turning depleted land into a biodiverse farm. You watch nature knit itself back together one problem at a time.", "u": "https://en.wikipedia.org/wiki/The_Biggest_Little_Farm", "hf": "Huit ans à transformer une terre épuisée en ferme riche en biodiversité. On voit la nature se retisser, un problème à la fois."}, {"t": "doc", "n": "The Territory", "by": "Alex Pritz, with the Uru-eu-wau-wau people", "y": "2022", "th": ["land", "forest", "youth"], "h": "Young Uru-eu-wau-wau defenders use drones and cameras to protect their Amazon homeland, and filmed part of the documentary themselves.", "u": "https://en.wikipedia.org/wiki/The_Territory_(film)", "hf": "De jeunes défenseurs Uru-eu-wau-wau utilisent drones et caméras pour protéger leur territoire amazonien, et ont eux-mêmes filmé une partie du documentaire."}, {"t": "doc", "n": "Call Me Human (Je m'appelle humain)", "by": "Kim O'Bomsawin", "y": "2020", "th": ["land"], "h": "A tender portrait of Innu poet Joséphine Bacon, keeper of a language and a way of seeing the world.", "u": "https://en.wikipedia.org/wiki/Call_Me_Human", "nf": "Je m'appelle humain", "hf": "Un portrait tendre de la poète innue Joséphine Bacon, gardienne d'une langue et d'une façon de voir le monde.", "reg": "qc", "pr": "ethics"}, {"t": "doc", "n": "Wilding", "by": "David Allen", "y": "2023", "th": ["wild", "soil"], "h": "A failing English farm, Knepp, is handed back to nature. Nightingales, turtle doves and white storks return.", "u": "https://en.wikipedia.org/wiki/Wilding_(film)", "hf": "Une ferme anglaise en difficulté, Knepp, est rendue à la nature. Rossignols, tourterelles des bois et cigognes blanches reviennent."}, {"t": "doc", "n": "The Serengeti Rules", "by": "Nicolas Brown", "y": "2018", "th": ["wild", "progress"], "h": "The scientists who found how nature regulates itself, and how bringing back key species can bring back whole ecosystems.", "u": "https://en.wikipedia.org/wiki/The_Serengeti_Rules", "hf": "Les scientifiques qui ont découvert comment la nature se régule elle-même, et comment le retour d'espèces clés peut ramener des écosystèmes entiers."}, {"t": "doc", "n": "Bigger Than Us", "by": "Flore Vasseur", "y": "2021", "th": ["youth", "community"], "h": "Melati Wijsen travels the world to meet young people who took on huge problems in their own communities, and are winning.", "u": "https://en.wikipedia.org/wiki/Bigger_Than_Us", "hf": "Melati Wijsen parcourt le monde à la rencontre de jeunes qui s'attaquent à d'immenses problèmes dans leur communauté, et qui gagnent."}, {"t": "doc", "n": "Ocean with David Attenborough", "by": "Keith Scholey & Toby Nicholas", "y": "2025", "th": ["ocean", "wild"], "h": "It does not look away from the damage, then shows how quickly protected seas can recover. It closes with a real plan for the high seas.", "u": "https://en.wikipedia.org/wiki/Ocean_with_David_Attenborough", "hf": "Le film ne détourne pas les yeux des dégâts, puis montre à quelle vitesse les mers protégées se rétablissent. Il se termine sur un vrai plan pour la haute mer."}, {"t": "doc", "n": "David Attenborough: A Life on Our Planet", "by": "Alastair Fothergill, Jonnie Hughes & Keith Scholey", "y": "2020", "th": ["wild", "vision"], "h": "His witness statement, followed by a clear vision of how rewilding the world is still possible.", "u": "https://en.wikipedia.org/wiki/David_Attenborough:_A_Life_on_Our_Planet", "hf": "Son témoignage, suivi d'une vision claire de la façon dont il est encore possible de réensauvager le monde."}, {"t": "doc", "n": "The Year Earth Changed", "by": "Tom Beard", "y": "2021", "th": ["wild"], "h": "During the 2020 lockdowns, wildlife bounced back in weeks. It is proof of how resilient nature is when we give it room.", "u": "https://en.wikipedia.org/wiki/The_Year_Earth_Changed", "hf": "Pendant les confinements de 2020, la faune a rebondi en quelques semaines. La preuve de la résilience de la nature quand on lui laisse de la place."}, {"t": "doc", "n": "Fantastic Fungi", "by": "Louie Schwartzberg", "y": "2019", "th": ["fungi", "forest", "progress"], "h": "The hidden networks that knit forests together, and the fungi being used to clean soil and build new materials.", "u": "https://en.wikipedia.org/wiki/Fantastic_Fungi", "hf": "Les réseaux cachés qui relient les forêts, et les champignons utilisés pour dépolluer les sols et créer de nouveaux matériaux."}, {"t": "doc", "n": "My Octopus Teacher", "by": "Pippa Ehrlich & James Reed", "y": "2020", "th": ["ocean", "wild"], "h": "A year-long friendship with an octopus in a South African kelp forest. It reawakens wonder and inspired the Sea Change Project.", "u": "https://en.wikipedia.org/wiki/My_Octopus_Teacher", "hf": "Une amitié d'un an avec une pieuvre dans une forêt de varech sud-africaine. Le film ravive l'émerveillement et a inspiré le Sea Change Project."}, {"t": "doc", "n": "Jane", "by": "Brett Morgen", "y": "2017", "th": ["wild"], "h": "Unseen archive footage of a young Jane Goodall in Gombe. It shows how one patient, curious person changed how we see animals.", "u": "https://en.wikipedia.org/wiki/Jane_(2017_film)", "hf": "Des images d'archives inédites d'une jeune Jane Goodall à Gombe. Le film montre comment une personne patiente et curieuse a changé notre regard sur les animaux."}, {"t": "doc", "n": "The Great Green Wall", "by": "Jared P. Scott · with Inna Modja", "y": "2019", "th": ["forest", "land", "community"], "h": "Malian musician Inna Modja travels the route of Africa's plan to grow a green belt across the Sahel.", "u": "https://en.wikipedia.org/wiki/Great_Green_Wall_(Africa)", "hf": "La musicienne malienne Inna Modja suit le tracé du projet africain de ceinture verte à travers le Sahel."}, {"t": "doc", "n": "The Ants & the Grasshopper", "by": "Raj Patel & Zak Piper", "y": "2021", "th": ["soil", "community"], "h": "Anita Chitaya, a farmer from Malawi, brings her village's hard-won lessons about food and fairness to American farmers.", "u": "https://www.imdb.com/find/?q=The%20Ants%20and%20the%20Grasshopper", "hf": "Anita Chitaya, agricultrice du Malawi, apporte aux agriculteurs américains les leçons durement acquises de son village sur l'alimentation et l'équité."}, {"t": "doc", "n": "Ice on Fire", "by": "Leila Conners", "y": "2019", "th": ["energy", "progress"], "h": "Skips the doom and focuses on the scientists and technologies working to draw carbon back down.", "u": "https://en.wikipedia.org/wiki/Ice_on_Fire", "hf": "Laisse de côté le catastrophisme pour se concentrer sur les scientifiques et les technologies qui travaillent à retirer le carbone de l'atmosphère."}, {"t": "doc", "n": "The Water Walker", "by": "James Burns", "y": "2019", "th": ["land", "youth"], "h": "A short film about Anishinaabe water protector Autumn Peltier and her campaign for clean water in First Nations.", "u": "https://en.wikipedia.org/wiki/Autumn_Peltier", "hf": "Un court métrage sur la protectrice de l'eau anishinaabe Autumn Peltier et sa lutte pour l'eau potable dans les Premières Nations.", "reg": "ca", "pr": "ethics"}, {"t": "film", "n": "Avatar saga", "by": "James Cameron", "y": "2009 · 2022 · 2025", "th": ["vision", "forest", "ocean", "land"], "pick": 1, "h": "Avatar, The Way of Water and Fire and Ash imagine a people who live in reciprocity with a living world. The films helped a generation feel what is at stake and what is possible.", "u": "https://en.wikipedia.org/wiki/Avatar_(franchise)", "nf": "La saga Avatar", "hf": "Avatar, La Voie de l'eau et De feu et de cendres imaginent un peuple qui vit en réciprocité avec un monde vivant. Les films ont aidé une génération à ressentir ce qui est en jeu et ce qui est possible."}, {"t": "film", "n": "Nausicaä of the Valley of the Wind", "by": "Hayao Miyazaki", "y": "1984", "th": ["vision", "forest"], "h": "After a collapse, a young princess sees that the poisoned forest is healing the world, not attacking it.", "u": "https://en.wikipedia.org/wiki/Nausica%C3%A4_of_the_Valley_of_the_Wind_(film)", "nf": "Nausicaä de la vallée du vent", "hf": "Après un effondrement, une jeune princesse comprend que la forêt toxique guérit le monde au lieu de l'attaquer."}, {"t": "film", "n": "Princess Mononoke", "by": "Hayao Miyazaki", "y": "1997", "th": ["vision", "forest"], "h": "Industry and forest spirits at war, and the hard, hopeful work of seeing both sides with clear eyes.", "u": "https://en.wikipedia.org/wiki/Princess_Mononoke", "nf": "Princesse Mononoké", "hf": "L'industrie et les esprits de la forêt en guerre, et le travail difficile et plein d'espoir de voir les deux camps avec lucidité."}, {"t": "film", "n": "WALL·E", "by": "Andrew Stanton · Pixar", "y": "2008", "th": ["vision", "simple"], "h": "One small plant is enough to bring humanity home and start over.", "u": "https://en.wikipedia.org/wiki/WALL-E", "hf": "Une seule petite plante suffit pour ramener l'humanité chez elle et tout recommencer."}, {"t": "film", "n": "The Wild Robot", "by": "Chris Sanders · DreamWorks", "y": "2024", "th": ["vision", "wild"], "h": "A robot learns kindness from the wilderness. The film quietly imagines technology and nature on the same side.", "u": "https://en.wikipedia.org/wiki/The_Wild_Robot_(film)", "nf": "Le Robot sauvage", "hf": "Un robot apprend la bienveillance au contact de la nature sauvage. Le film imagine discrètement la technologie et la nature du même côté."}, {"t": "film", "n": "The Boy Who Harnessed the Wind", "by": "Chiwetel Ejiofor", "y": "2019", "th": ["energy", "youth", "community"], "h": "The true story of William Kamkwamba, who built a windmill from scrap to save his Malawi village from famine.", "u": "https://en.wikipedia.org/wiki/The_Boy_Who_Harnessed_the_Wind_(film)", "nf": "Le Garçon qui dompta le vent", "hf": "L'histoire vraie de William Kamkwamba, qui a construit une éolienne avec des rebuts pour sauver son village du Malawi de la famine."}, {"t": "film", "n": "The Man Who Planted Trees", "by": "Frédéric Back", "y": "1987", "th": ["forest", "vision"], "h": "A Quebec-made, Oscar-winning animated short about a shepherd who patiently plants a whole forest back into a dead valley.", "u": "https://en.wikipedia.org/wiki/The_Man_Who_Planted_Trees_(film)", "nf": "L'Homme qui plantait des arbres", "hf": "Un court métrage d'animation québécois oscarisé sur un berger qui replante patiemment toute une forêt dans une vallée morte.", "reg": "qc", "pr": "change"}, {"t": "film", "n": "La Belle Verte (Visit to a Green Planet)", "nf": "La Belle Verte", "by": "Coline Serreau · with Vincent Lindon, Marion Cotillard", "y": "1996", "th": ["vision", "simple", "community"], "h": "A visitor from a planet that left money, cars and waste behind long ago comes to 1990s Paris, and gently \"disconnects\" the people she meets from their stress. A cult French comedy that imagines a wiser civilization living in harmony with nature.", "hf": "Une visiteuse venue d'une planète qui a abandonné depuis longtemps l'argent, les voitures et le gaspillage débarque dans le Paris des années 1990, et « déconnecte » doucement les gens qu'elle croise de leur stress. Une comédie française culte qui imagine une civilisation plus sage, en harmonie avec la nature.", "u": "https://en.wikipedia.org/wiki/La_Belle_Verte"}, {"t": "series", "n": "Our Planet", "nf": "Notre planète", "by": "Silverback Films · narrated by David Attenborough · Netflix", "y": "2019 · 2023", "th": ["wild", "ocean", "forest"], "h": "Eight episodes across every major habitat on Earth, made with WWF, then a second season (2023) following animal migrations. It pairs wonder with clear ideas of what protection can still save.", "hf": "Huit épisodes à travers les grands milieux de la Terre, réalisés avec le WWF, puis une deuxième saison (2023) qui suit les migrations animales. La série allie l'émerveillement à des pistes claires sur ce que la protection peut encore sauver.", "u": "https://www.ourplanet.com/"}, {"t": "series", "n": "Our Great National Parks", "by": "Narrated by Barack Obama · Netflix", "y": "2022", "th": ["wild", "community"], "h": "Five episodes in protected places from Chilean Patagonia to Kenya's Tsavo and Indonesia's Gunung Leuser. The series shows parks working alongside the communities around them.", "hf": "Cinq épisodes dans des aires protégées, de la Patagonie chilienne au parc de Tsavo au Kenya et au Gunung Leuser en Indonésie. La série montre des parcs qui fonctionnent avec les communautés qui les entourent.", "u": "https://en.wikipedia.org/wiki/Our_Great_National_Parks"}, {"t": "series", "n": "Down to Earth with Zac Efron", "by": "Zac Efron & Darin Olien · Netflix", "y": "2020 · 2022", "th": ["energy", "soil", "simple"], "h": "A travel show about green energy, food and sustainable living, from Iceland and Costa Rica to a full second season across Australia. Light, curious and easy to share with friends.", "hf": "Une émission de voyage sur l'énergie verte, l'alimentation et la vie durable, de l'Islande au Costa Rica, puis une deuxième saison entière en Australie. Légère, curieuse et facile à partager entre amis.", "u": "https://en.wikipedia.org/wiki/Down_to_Earth_with_Zac_Efron"}, {"t": "series", "n": "The Earthshot Prize: Repairing Our Planet", "by": "Prince William & David Attenborough · Discovery", "y": "2021", "th": ["progress", "energy", "ocean"], "h": "Five episodes, one per Earthshot goal: nature, climate, clean air, oceans and waste. Each one profiles people with solutions that already work.", "hf": "Cinq épisodes, un par objectif du prix Earthshot : nature, climat, air pur, océans et déchets. Chacun présente des gens dont les solutions fonctionnent déjà.", "u": "https://earthshotprize.org/"}, {"t": "series", "n": "Hope in the Water", "by": "Intuitive Content · with Shailene Woodley, Martha Stewart, José Andrés · PBS", "y": "2024", "th": ["ocean", "soil"], "h": "Three episodes on fishers, farmers and scientists rethinking seafood, from kelp restoration to new kinds of aquaculture. Practical answers for oceans and freshwater.", "hf": "Trois épisodes sur des pêcheurs, des producteurs et des scientifiques qui repensent les produits de la mer, de la restauration du varech à de nouvelles formes d'aquaculture. Des réponses concrètes pour les océans et les eaux douces.", "u": "https://www.pbs.org/about/about-pbs/blogs/news/pbs-set-to-air-hope-in-the-water-a-characterdriven-nature-docuseries-in-summer-2024"}, {"t": "series", "n": "Wild Isles", "by": "David Attenborough · BBC One", "y": "2023", "th": ["wild", "forest", "ocean"], "h": "Five episodes on the grasslands, woodlands, rivers and seas of Britain and Ireland. It came with a campaign by WWF, the RSPB and the National Trust to restore that nature.", "hf": "Cinq épisodes sur les prairies, les forêts, les rivières et les mers de la Grande-Bretagne et de l'Irlande. La série s'accompagnait d'une campagne du WWF, de la RSPB et du National Trust pour restaurer cette nature.", "u": "https://wwf.org.uk/wild-isles"}, {"t": "series", "n": "This Is a Gardening Show", "by": "Zach Galifianakis · Netflix", "y": "2026", "th": ["soil", "community", "simple"], "h": "Six short, funny episodes where Zach Galifianakis learns to grow apples, tomatoes, corn and root vegetables, forage and make compost from patient experts, with schoolkids from Comox, B.C. weighing in. Released on Earth Day 2026, it makes gardening feel joyful and within anyone's reach.", "hf": "Six courts épisodes drôles où Zach Galifianakis apprend auprès d'experts patients à faire pousser pommes, tomates, maïs et légumes racines, à cueillir en forêt et à composter, avec l'avis d'élèves de Comox, en Colombie-Britannique. Sortie le jour de la Terre 2026, la série rend le jardinage joyeux et accessible à tous.", "u": "https://www.radicalmedia.com/work/this-is-a-gardening-show"}, {"t": "series", "n": "Live to 100: Secrets of the Blue Zones", "by": "Dan Buettner · Netflix", "y": "2023", "th": ["community", "simple", "soil"], "h": "Four episodes with Dan Buettner in the places where people live longest: Okinawa, Sardinia, Ikaria, Costa Rica's Nicoya Peninsula and Loma Linda, California, plus Singapore. Close friendships, plant-rich food and daily movement turn out to matter more than any miracle cure.", "hf": "Quatre épisodes avec Dan Buettner dans les endroits où l'on vit le plus longtemps : Okinawa, la Sardaigne, Ikaria, la péninsule de Nicoya au Costa Rica et Loma Linda en Californie, puis Singapour. Les liens d'amitié, une alimentation riche en végétaux et le mouvement au quotidien comptent plus que n'importe quel remède miracle.", "u": "https://www.netflix.com/title/81214929"}, {"t": "doc", "n": "Fungi: Web of Life", "by": "Presented by Merlin Sheldrake · narrated by Björk · IMAX", "y": "2023", "th": ["fungi", "forest"], "h": "A big-screen journey into the fungal networks that have shaped life on Earth for over a billion years. Biologist Merlin Sheldrake asks how we might partner with fungi to adapt to rapid change.", "hf": "Un voyage sur grand écran dans les réseaux fongiques qui façonnent la vie sur Terre depuis plus d'un milliard d'années. Le biologiste Merlin Sheldrake se demande comment nous pourrions nous associer aux champignons pour nous adapter aux changements rapides.", "u": "https://www.merlinsheldrake.com/imax-movie"}, {"t": "doc", "n": "The Kingdom: How Fungi Made Our World", "by": "Annamaria Talas & Simon Nasht", "y": "2018", "th": ["fungi", "progress"], "h": "A 52-minute Australian documentary on how fungi made life on land possible. It follows researchers finding ways fungi could help people, from medicine to new materials.", "hf": "Un documentaire australien de 52 minutes sur la façon dont les champignons ont rendu la vie possible sur la terre ferme. Il suit des chercheurs qui découvrent comment les champignons pourraient aider l'humanité, de la médecine aux nouveaux matériaux.", "u": "https://www.smithandnasht.com/fungi/"}, {"t": "doc", "n": "The Mushroom Speaks", "by": "Marion Neumann", "y": "2021", "th": ["fungi", "community", "vision"], "h": "A Swiss film that follows parasites, symbionts and decomposers to show how much of life runs on cooperation. It imagines a culture that learns from fungi how to live together.", "hf": "Un film suisse qui suit parasites, symbiotes et décomposeurs pour montrer à quel point la vie repose sur la coopération. Il imagine une culture qui apprend des champignons à vivre ensemble.", "u": "https://www.swissfilms.ch/en/film_search/filmdetails/-/id_film/2146992151/search/7"}, {"t": "doc", "n": "Know Your Mushrooms", "by": "Ron Mann", "y": "2008", "th": ["fungi", "community"], "h": "Canadian filmmaker Ron Mann spends four days at the Telluride Mushroom Festival with mycologists Gary Lincoff and Larry Evans. Foraging, cooking and talks make the fungal world feel joyful and close at hand.", "hf": "Le cinéaste canadien Ron Mann passe quatre jours au festival des champignons de Telluride avec les mycologues Gary Lincoff et Larry Evans. Cueillette, cuisine et conférences rendent le monde fongique joyeux et accessible.", "u": "https://en.wikipedia.org/wiki/Know_Your_Mushrooms"}];
+const QUOTES = [];
+const PHOTOS = {"doc:Nitassinan": {"img": "img/book-b-tons-message-tshissinuashitakana.webp", "file": "Natashquan 02.jpg", "page": "https://commons.wikimedia.org/wiki/File:Natashquan_02.jpg", "artist": "Cephas", "license": "CC BY-SA 3.0"}, "doc:Minimalism: A Documentary About the Important Things": {"img": "img/doc-minimalism-a-documentary-about-the-important-t.webp", "file": "Modern pendant lights illuminate minimalist interior design in stylish dining area during evening hours.jpg", "page": "https://commons.wikimedia.org/wiki/File:Modern_pendant_lights_illuminate_minimalist_interior_design_in_stylish_dining_area_during_evening_hours.jpg", "artist": "Shixart1985", "license": "CC BY 2.0"}, "doc:The Minimalists: Less Is Now": {"img": "img/doc-the-minimalists-less-is-now.webp", "file": "Paeonia 'Paula Fay' 5 2021 xPeony- (51207723700).jpg", "page": "https://commons.wikimedia.org/wiki/File:Paeonia_%27Paula_Fay%27_5_2021_xPeony-_(51207723700).jpg", "artist": "F. D. Richards from Clinton, MI", "license": "CC BY-SA 2.0"}, "doc:How to Live on Earth": {"img": "img/doc-how-to-live-on-earth.webp", "file": "Agroforestry alley cropping & Wisconsin River, Savanna Institute farm 2024.jpg", "page": "https://commons.wikimedia.org/wiki/File:Agroforestry_alley_cropping_%26_Wisconsin_River,_Savanna_Institute_farm_2024.jpg", "artist": "Savannainstitute", "license": "CC BY-SA 4.0"}, "doc:Groundswell": {"img": "img/doc-groundswell.webp", "file": "Soybean Field with Healthy Soil (9316804120).jpg", "page": "https://commons.wikimedia.org/wiki/File:Soybean_Field_with_Healthy_Soil_(9316804120).jpg", "artist": "USDA NRCS South Dakota", "license": "Public domain"}, "doc:Tomorrow (Demain)": {"img": "img/doc-tomorrow-demain.webp", "file": "Oasis Community Garden in New York City 01.jpg", "page": "https://commons.wikimedia.org/wiki/File:Oasis_Community_Garden_in_New_York_City_01.jpg", "artist": "Kritzolina", "license": "CC BY-SA 4.0"}, "doc:Call Me Human (Je m'appelle humain)": {"img": "img/doc-call-me-human-je-m-appelle-humain.webp", "file": "Joséphine Bacon.jpg", "page": "https://commons.wikimedia.org/wiki/File:Jos%C3%A9phine_Bacon.jpg", "artist": "Florencecassisi", "license": "CC BY-SA 3.0"}, "doc:Regenerating Australia": {"img": "img/doc-regenerating-australia.webp", "file": "Former Redbank Road.jpg", "page": "https://commons.wikimedia.org/wiki/File:Former_Redbank_Road.jpg", "artist": "Bidgee", "license": "CC BY-SA 3.0"}, "doc:The Serengeti Rules": {"img": "img/doc-the-serengeti-rules.webp", "file": "040 Blue wildebeest with wattled starlings in the Serengeti National Park Photo by Giles Laurent.jpg", "page": "https://commons.wikimedia.org/wiki/File:040_Blue_wildebeest_with_wattled_starlings_in_the_Serengeti_National_Park_Photo_by_Giles_Laurent.jpg", "artist": "Giles Laurent", "license": "CC BY-SA 4.0"}, "doc:Bigger Than Us": {"img": "img/doc-bigger-than-us.webp", "file": "ChangeNOW2022- Melati Wijsen, Youthtopia (52131649583) (cropped).jpg", "page": "https://commons.wikimedia.org/wiki/File:ChangeNOW2022-_Melati_Wijsen,_Youthtopia_(52131649583)_(cropped).jpg", "artist": "ChangeNOW from Paris, France", "license": "CC BY 2.0"}, "doc:Ocean with David Attenborough": {"img": "img/doc-ocean-with-david-attenborough.webp", "file": "Coral Outcrop Flynn Reef.jpg", "page": "https://commons.wikimedia.org/wiki/File:Coral_Outcrop_Flynn_Reef.jpg", "artist": "Toby Hudson", "license": "CC BY-SA 3.0"}, "doc:Wilding": {"img": "img/doc-wilding.webp", "file": "Fence at Knepp Wildland with old Knepp Castle (51156153050).png", "page": "https://commons.wikimedia.org/wiki/File:Fence_at_Knepp_Wildland_with_old_Knepp_Castle_(51156153050).png", "artist": "Steer Photographic", "license": "CC BY 2.0"}, "doc:Fantastic Fungi": {"img": "img/doc-fantastic-fungi.webp", "file": "The Mushroom’s Quiet Ascent.jpg", "page": "https://commons.wikimedia.org/wiki/File:The_Mushroom%E2%80%99s_Quiet_Ascent.jpg", "artist": "Derk29", "license": "CC BY-SA 4.0"}, "doc:My Octopus Teacher": {"img": "img/doc-my-octopus-teacher.webp", "file": "Giant Pacific octopus at Monterey Bay Aquarium 2014-1.jpg", "page": "https://commons.wikimedia.org/wiki/File:Giant_Pacific_octopus_at_Monterey_Bay_Aquarium_2014-1.jpg", "artist": "Bill Abbott", "license": "CC BY-SA 2.0"}, "doc:Jane": {"img": "img/doc-jane.webp", "file": "Eastern chimpanzee.jpg", "page": "https://commons.wikimedia.org/wiki/File:Eastern_chimpanzee.jpg", "artist": "Roland", "license": "CC BY-SA 2.0"}, "doc:The Great Green Wall": {"img": "img/doc-the-great-green-wall.webp", "file": "Desert greenery ESA19443666.jpeg", "page": "https://commons.wikimedia.org/wiki/File:Desert_greenery_ESA19443666.jpeg", "artist": "European Space Agency", "license": "Attribution"}, "doc:The Ants & the Grasshopper": {"img": "img/doc-the-ants-the-grasshopper.webp", "file": "Local Malawi variety of sorghum.jpg", "page": "https://commons.wikimedia.org/wiki/File:Local_Malawi_variety_of_sorghum.jpg", "artist": "Swathi Sridharan", "license": "CC BY-SA 2.0"}, "doc:The Water Walker": {"img": "img/doc-the-water-walker.webp", "file": "Little Current Shore (53190259576).jpg", "page": "https://commons.wikimedia.org/wiki/File:Little_Current_Shore_(53190259576).jpg", "artist": "WabbitWanderer from London, Canada", "license": "CC BY-SA 2.0"}, "film:Nausicaä of the Valley of the Wind": {"img": "img/film-nausica-of-the-valley-of-the-wind.webp", "file": "Yakushima moss trail (52931599465).jpg", "page": "https://commons.wikimedia.org/wiki/File:Yakushima_moss_trail_(52931599465).jpg", "artist": "Raita Futo from Tokyo, Japan", "license": "CC BY 2.0"}, "film:Avatar saga": {"img": "img/film-avatar-saga.webp", "file": "Herbe Zwergknäueling Panellus stipticus.jpg", "page": "https://commons.wikimedia.org/wiki/File:Herbe_Zwergkn%C3%A4ueling_Panellus_stipticus.jpg", "artist": "Holger Krisp", "license": "CC BY 3.0"}, "film:Princess Mononoke": {"img": "img/film-princess-mononoke.webp", "file": "Shiratani Unsuikyo Natural Forest (31514133624).jpg", "page": "https://commons.wikimedia.org/wiki/File:Shiratani_Unsuikyo_Natural_Forest_(31514133624).jpg", "artist": "David Stanley from Nanaimo, Canada", "license": "CC BY 2.0"}, "film:The Wild Robot": {"img": "img/film-the-wild-robot.webp", "file": "Canada goose flight cropped and NR.jpg", "page": "https://commons.wikimedia.org/wiki/File:Canada_goose_flight_cropped_and_NR.jpg", "artist": "Image taken by Alan D. Wilson, and modified by Diliff (cropped and noise reduction applied).", "license": "CC BY-SA 2.5"}, "film:WALL·E": {"img": "img/film-wall-e.webp", "file": "Starr-090702-2093-Senna multijuga-seedling in hand-Hana-Maui (24672972390).jpg", "page": "https://commons.wikimedia.org/wiki/File:Starr-090702-2093-Senna_multijuga-seedling_in_hand-Hana-Maui_(24672972390).jpg", "artist": "Forest and Kim Starr", "license": "CC BY 3.0 us"}, "film:The Boy Who Harnessed the Wind": {"img": "img/film-the-boy-who-harnessed-the-wind.webp", "file": "William Kamkwamba at TED in 2007.jpg", "page": "https://commons.wikimedia.org/wiki/File:William_Kamkwamba_at_TED_in_2007.jpg", "artist": "Erik (HASH) Hersman from Orlando", "license": "CC BY 2.0"}, "film:The Man Who Planted Trees": {"img": "img/film-the-man-who-planted-trees.webp", "file": "Epping Forest High Beach Waltham Abbey Essex England - oak tree trunks 1.jpg", "page": "https://commons.wikimedia.org/wiki/File:Epping_Forest_High_Beach_Waltham_Abbey_Essex_England_-_oak_tree_trunks_1.jpg", "artist": "Acabashi", "license": "CC BY-SA 4.0"}, "doc:Yanuni": {"img": "img/doc-yanuni.webp", "file": "Rio Xingu - Vitória do Xingu - PA 01.jpg", "page": "https://commons.wikimedia.org/wiki/File:Rio_Xingu_-_Vit%C3%B3ria_do_Xingu_-_PA_01.jpg", "artist": "Túllio F", "license": "CC BY-SA 4.0"}, "doc:Animal": {"img": "img/doc-animal.webp", "file": "Purple coneflowers and a bee, Cathleen Kuehl Memorial Wildflower Meadow 2026-08-01.jpg", "page": "https://commons.wikimedia.org/wiki/File:Purple_coneflowers_and_a_bee,_Cathleen_Kuehl_Memorial_Wildflower_Meadow_2026-08-01.jpg", "artist": "Peter Cooper Jr.", "license": "CC0"}, "doc:2040": {"img": "img/doc-2040.webp", "file": "SSHaus.jpg", "page": "https://commons.wikimedia.org/wiki/File:SSHaus.jpg", "artist": "Andrewglaser (talk)", "license": "CC BY-SA 3.0"}, "doc:The Territory": {"img": "img/doc-the-territory.webp", "file": "Amazon River - 2018.jpg", "page": "https://commons.wikimedia.org/wiki/File:Amazon_River_-_2018.jpg", "artist": "Alexander Gerst", "license": "CC BY-SA 2.0"}, "doc:Common Ground": {"img": "img/doc-common-ground.webp", "file": "Red Clover Field (52017717786).jpg", "page": "https://commons.wikimedia.org/wiki/File:Red_Clover_Field_(52017717786).jpg", "artist": "USDAgov", "license": "Public domain"}, "doc:The Biggest Little Farm": {"img": "img/doc-the-biggest-little-farm.webp", "file": "Sheep grazing in an orchard near Redhill - geograph.org.uk - 2694506.jpg", "page": "https://commons.wikimedia.org/wiki/File:Sheep_grazing_in_an_orchard_near_Redhill_-_geograph.org.uk_-_2694506.jpg", "artist": "David Smith", "license": "CC BY-SA 2.0"}, "doc:David Attenborough: A Life on Our Planet": {"img": "img/doc-david-attenborough-a-life-on-our-planet.webp", "file": "Horses in Chernobyl, Ukraine.jpg", "page": "https://commons.wikimedia.org/wiki/File:Horses_in_Chernobyl,_Ukraine.jpg", "artist": "Xopc (talk) (Uploads)", "license": "CC BY-SA 2.5"}, "doc:The Year Earth Changed": {"img": "img/doc-the-year-earth-changed.webp", "file": "Sika Deer in Nara, Japan, 20240819 1546 4782.jpg", "page": "https://commons.wikimedia.org/wiki/File:Sika_Deer_in_Nara,_Japan,_20240819_1546_4782.jpg", "artist": "Jakub Hałun", "license": "CC BY 4.0"}, "doc:Ice on Fire": {"img": "img/doc-ice-on-fire.webp", "file": "Leopard shark in kelp.jpg", "page": "https://commons.wikimedia.org/wiki/File:Leopard_shark_in_kelp.jpg", "artist": "Mfield, Matthew Field, www.photography.mattfield.com", "license": "CC BY-SA 3.0"}, "doc:Kiss the Ground": {"img": "img/doc-kiss-the-ground.webp", "file": "Cattle using a fabricated windbreak in western South Dakota. (11735268075).jpg", "page": "https://commons.wikimedia.org/wiki/File:Cattle_using_a_fabricated_windbreak_in_western_South_Dakota._(11735268075).jpg", "artist": "USDA NRCS South Dakota", "license": "Public domain"}, "series:Our Planet": {"img": "img/series-our-planet.webp", "file": "Western white-bearded wildebeest (Connochaetes taurinus mearnsi) Mara River crossing 2b.jpg", "page": "https://commons.wikimedia.org/wiki/File:Western_white-bearded_wildebeest_(Connochaetes_taurinus_mearnsi)_Mara_River_crossing_2b.jpg", "artist": "Charles J. Sharp", "license": "CC BY-SA 4.0"}, "series:Our Great National Parks": {"img": "img/series-our-great-national-parks.webp", "file": "Cuernos del Paine in Torres del Paine National Park.jpg", "page": "https://commons.wikimedia.org/wiki/File:Cuernos_del_Paine_in_Torres_del_Paine_National_Park.jpg", "artist": "Pedro Szekely from Los Angeles, USA", "license": "CC BY-SA 2.0"}, "series:Down to Earth with Zac Efron": {"img": "img/series-down-to-earth-with-zac-efron.webp", "file": "The Hellisheiði Geothermal Power Plant, 2018, Iceland.jpg", "page": "https://commons.wikimedia.org/wiki/File:The_Hellishei%C3%B0i_Geothermal_Power_Plant,_2018,_Iceland.jpg", "artist": "Mathieu Neville", "license": "CC BY 4.0"}, "series:The Earthshot Prize: Repairing Our Planet": {"img": "img/series-the-earthshot-prize-repairing-our-planet.webp", "file": "Mangrove Planting Restoration Project in Changkat Keruing.jpg", "page": "https://commons.wikimedia.org/wiki/File:Mangrove_Planting_Restoration_Project_in_Changkat_Keruing.jpg", "artist": "KUASACSR", "license": "CC BY-SA 4.0"}, "series:Hope in the Water": {"img": "img/series-hope-in-the-water.webp", "file": "Kelp forest Channel Islands.JPG", "page": "https://commons.wikimedia.org/wiki/File:Kelp_forest_Channel_Islands.JPG", "artist": "myself, PatríciaR", "license": "CC BY-SA 2.5"}, "series:Wild Isles": {"img": "img/series-wild-isles.webp", "file": "Woodland Bluebells.jpg", "page": "https://commons.wikimedia.org/wiki/File:Woodland_Bluebells.jpg", "artist": "Prosthetic Head", "license": "CC BY-SA 4.0"}, "series:This Is a Gardening Show": {"img": "img/series-this-is-a-gardening-show.webp", "file": "Vegetable garden 1.JPG", "page": "https://commons.wikimedia.org/wiki/File:Vegetable_garden_1.JPG", "artist": "P199", "license": "CC BY-SA 3.0"}, "series:Live to 100: Secrets of the Blue Zones": {"img": "img/series-live-to-100-secrets-of-the-blue-zones.webp", "file": "Sunset at Port of Manganitis, Ikaria, Greece julesvernex2.jpg", "page": "https://commons.wikimedia.org/wiki/File:Sunset_at_Port_of_Manganitis,_Ikaria,_Greece_julesvernex2.jpg", "artist": "Jules Verne Times Two", "license": "CC BY-SA 4.0"}, "doc:Fungi: Web of Life": {"img": "img/doc-fungi-web-of-life.webp", "file": "Mycelium.JPG", "page": "https://commons.wikimedia.org/wiki/File:Mycelium.JPG", "artist": "Christian Scheckhuber", "license": "CC BY-SA 4.0"}, "doc:The Kingdom: How Fungi Made Our World": {"img": "img/doc-the-kingdom-how-fungi-made-our-world.webp", "file": "Gewoon elfenbankje (Trametes versicolor). Locatie, Paddenstoelenreservaat. 31-10-2022. (actm.) 01.jpg", "page": "https://commons.wikimedia.org/wiki/File:Gewoon_elfenbankje_(Trametes_versicolor)._Locatie,_Paddenstoelenreservaat._31-10-2022._(actm.)_01.jpg", "artist": "Agnes Monkelbaan", "license": "CC BY-SA 4.0"}, "doc:The Mushroom Speaks": {"img": "img/doc-the-mushroom-speaks.webp", "file": "Mushroom on Swedish forest floor 16.jpg", "page": "https://commons.wikimedia.org/wiki/File:Mushroom_on_Swedish_forest_floor_16.jpg", "artist": "Netha Hussain", "license": "CC BY-SA 3.0"}, "doc:Know Your Mushrooms": {"img": "img/doc-know-your-mushrooms.webp", "file": "Edible fungi in basket 2009 G1.jpg", "page": "https://commons.wikimedia.org/wiki/File:Edible_fungi_in_basket_2009_G1.jpg", "artist": "George Chernilevsky", "license": "Public domain"}};
+
+/* ---------- design settings (tuned with the design panel) ---------- */
+const DESIGN = {"coverRatio":"16/7"};
+const FONT_STACK={display:'ui-sans-serif,system-ui,sans-serif',body:'Georgia,"Times New Roman",serif'};
+const SERIF_DISPLAY=["Fraunces","Young Serif","Instrument Serif","DM Serif Display"];
+const SANS_BODY=["Work Sans","Figtree"];
+const SINGLE_WEIGHT=["DM Serif Display","Young Serif","Instrument Serif"];
+function fontVal(name,role){
+  const fb=role==="display"?(SERIF_DISPLAY.includes(name)?'Georgia,serif':FONT_STACK.display):(SANS_BODY.includes(name)?'system-ui,sans-serif':FONT_STACK.body);
+  return `"${name}",${fb}`;
+}
+function designCSS(d){
+  const vars=o=>Object.entries(o||{}).map(([k,v])=>`--${k}:${v};`).join("");
+  const lay={};
+  if(d.headingScale)lay["h-scale"]=d.headingScale;
+  if(d.bodySize)lay["body-size"]=d.bodySize+"px";
+  if(d.radius!=null)lay["radius"]=d.radius+"px";
+  if(d.gap)lay["gap"]=d.gap+"px";
+  if(d.gridMin)lay["grid-min"]=d.gridMin+"px";
+  if(d.coverRatio)lay["cover-ratio"]=d.coverRatio;
+  if(d.displayFont){lay["display"]=fontVal(d.displayFont,"display");if(SINGLE_WEIGHT.includes(d.displayFont)){lay["dw-bold"]="400";lay["dw-semi"]="400"}}
+  if(d.bodyFont)lay["body"]=fontVal(d.bodyFont,"body");
+  const dark=vars(d.dark);
+  return `:root{${vars(lay)}${vars(d.light)}}`+(dark?`@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){${dark}}}:root[data-theme="dark"]{${dark}}`:"");
+}
+function ensureFont(name){
+  if(!name||["Bricolage Grotesque","Newsreader","IBM Plex Mono"].includes(name))return;
+  const id="gf-"+name.replace(/\W+/g,"-");if(document.getElementById(id))return;
+  const l=document.createElement("link");l.id=id;l.rel="stylesheet";
+  l.href="https://fonts.googleapis.com/css2?family="+encodeURIComponent(name).replace(/%20/g,"+")+(SINGLE_WEIGHT.includes(name)?"":":wght@400;600;800")+"&display=swap";
+  document.head.appendChild(l);
+}
+function applyDesign(d){
+  let el=document.getElementById("design-overrides");
+  if(!el){el=document.createElement("style");el.id="design-overrides";document.body.appendChild(el)}
+  el.textContent=designCSS(d);
+  const r=document.documentElement;
+  r.dataset.covers=d.covers===false?"off":"on";
+  r.dataset.hero=d.hero===false?"off":"on";
+  r.dataset.feature=d.featureSide==="right"?"right":"left";
+  ensureFont(d.displayFont);ensureFont(d.bodyFont);
+}
+applyDesign(DESIGN);
+
+
+const I18N={
+en:{tabHome:"Home",tabList:"My list",meter:"From doom to hope",lo:"Doom",hi:"Hope",watched:n=>`${n} watched`,levels:["Deep in doom","Doom lifting","Finding hope","Hopeful","Full of hope"],markWatch:"Mark as watched",isWatched:"✓ Watched",rowWatched:"Watched",toastDown:(d,lv)=>`Hope +${d}% · ${lv}`,toastUp:lv=>`Removed from watched · ${lv}`,search:"Search titles…",tagline:"People are already building the future.",
+ featured:"Editor's pick",info:"More info",explore:"Watch / explore",add:"＋ My list",onlist:"✓ On my list",
+ rowList:"My list",rowPicks:"Editor's picks",rowNew:"New releases",rowNewSub:"Out in 2024 or later.",
+ rowQc:"Québec <em>&amp;</em> Canada",rowQcSub:"Films from this land about people already living in balance with it, each tagged with the ecological principle it shows. New titles through November 2026.",
+ rowFungi:"The world <em>under our feet</em>",rowFungiSub:"Fungi feed forests, rebuild soil and connect living things underground.",
+ rowQuotes:"Words to carry",
+ seeall:"See all →",back:"← Home",more:"More like this",results:"Results for",titles:n=>`${n} title${n===1?"":"s"}`,
+ allThemes:"All themes",empty:"Nothing matches yet. Try another word or theme.",emptyList:"Your list is empty. Open any title and add it to your list; it stays in this browser.",
+ pick:"Pick",qc:"QC",ca:"CA",close:"Close",principle:"Ecological principle",
+ credits:"Photo credits",footer:"Hope Library is a catalogue of documentaries, films and series that show a livable, beautiful future is being built right now. Photos come from Wikimedia Commons under free licences and show the people, places or subjects of each title, never official posters; titles without a photo get a drawn cover. Links go to official sites where possible, otherwise Wikipedia. Your list is saved in this browser only."},
+fr:{tabHome:"Accueil",tabList:"Ma liste",meter:"De la fin du monde à l'espoir",lo:"Fin du monde",hi:"Espoir",watched:n=>`${n} vu${n>1?"s":""}`,levels:["En pleine fin du monde","Le ciel s'éclaircit","L'espoir revient","Plein d'espoir","Débordant d'espoir"],markWatch:"Marquer comme vu",isWatched:"✓ Vu",rowWatched:"Déjà vus",toastDown:(d,lv)=>`Espoir +${d} % · ${lv}`,toastUp:lv=>`Retiré des titres vus · ${lv}`,search:"Chercher un titre…",tagline:"Des gens construisent déjà l'avenir.",
+ featured:"Coup de cœur",info:"Plus d'infos",explore:"Regarder / découvrir",add:"＋ Ma liste",onlist:"✓ Dans ma liste",
+ rowList:"Ma liste",rowPicks:"Coups de cœur de la rédaction",rowNew:"Nouveautés",rowNewSub:"Sortis en 2024 ou après.",
+ rowQc:"Québec <em>et</em> Canada",rowQcSub:"Des films d'ici sur des gens qui vivent déjà en équilibre avec le territoire, chacun associé au principe écologique qu'il illustre. De nouveaux titres jusqu'en novembre 2026.",
+ rowFungi:"Le monde <em>sous nos pieds</em>",rowFungiSub:"Les champignons nourrissent les forêts, refont les sols et relient les êtres vivants sous terre.",
+ rowQuotes:"Des mots à emporter",
+ seeall:"Tout voir →",back:"← Accueil",more:"Dans le même esprit",results:"Résultats pour",titles:n=>`${n} titre${n===1?"":"s"}`,
+ allThemes:"Tous les thèmes",empty:"Rien ne correspond. Essayez un autre mot ou thème.",emptyList:"Votre liste est vide. Ouvrez un titre et ajoutez-le; il reste dans ce navigateur.",
+ pick:"Coup de cœur",qc:"QC",ca:"CA",close:"Fermer",principle:"Principe écologique",
+ credits:"Crédits photo",footer:"Hope Library est un catalogue de documentaires, de films et de séries qui montrent qu'un avenir vivable et beau se construit en ce moment même. Les photos viennent de Wikimedia Commons sous licences libres et montrent les personnes, les lieux ou les sujets de chaque titre, jamais les affiches officielles; les titres sans photo ont une couverture dessinée. Les liens mènent aux sites officiels si possible, sinon à Wikipédia. Votre liste reste dans ce navigateur seulement."}};
+const TYPES={en:{doc:"Documentaries",series:"Series",film:"Fiction & animation"},
+ fr:{doc:"Documentaires",series:"Séries",film:"Fiction et animation"}};
+const TYPE1={en:{doc:"Documentary",series:"Series",film:"Film",pod:"Podcast",org:"Organization",person:"Person",place:"Place",book:"Book",media:"News & data"},
+ fr:{doc:"Documentaire",series:"Série",film:"Film",pod:"Balado",org:"Organisme",person:"Personne",place:"Lieu",book:"Livre",media:"Média"}};
+const THEMES={en:{forest:"Forests",ocean:"Oceans",land:"Indigenous land & rights",wild:"Rewilding & wildlife",soil:"Food & soil",energy:"Clean energy",city:"Cities",econ:"New economics",fungi:"Fungi",community:"Community",simple:"Simple living",youth:"Youth",progress:"Evidence of progress",vision:"Imagining futures"},
+ fr:{forest:"Forêts",ocean:"Océans",land:"Territoires et droits autochtones",wild:"Réensauvagement et faune",soil:"Alimentation et sols",energy:"Énergie propre",city:"Villes",econ:"Nouvelles économies",fungi:"Champignons",community:"Communauté",simple:"Vie simple",youth:"Jeunesse",progress:"Preuves de progrès",vision:"Imaginer l'avenir"}};
+const PRINCIPLES={en:{ethics:"Ecological ethics",harvest:"Sustainable harvest is possible",interact:"Species interact in communities",change:"Communities are always changing",biodiv:"Patterns of biodiversity",services:"Ecosystems provide services",footprint:"Ecological footprints"},
+ fr:{ethics:"Éthique écologique",harvest:"La récolte durable est possible",interact:"Les espèces interagissent en communautés",change:"Les communautés changent sans cesse",biodiv:"Les patrons de biodiversité",services:"Les écosystèmes rendent des services",footprint:"Empreintes écologiques"}};
+const WORDS={fr:[["Since ","Depuis "],["Ongoing","En cours"],["Newsletter","Infolettre"],["Online magazine","Magazine en ligne"],["Magazine","Magazine"],["Database","Base de données"],["Data","Données"],["Legacy","Héritage"],["today","aujourd'hui"],["agreement","entente"],["Global","Monde"]]};
+
+const state={lang:"en",view:"home",theme:null,q:"",billIdx:0};
+let saved=new Set();
+try{saved=new Set(JSON.parse(localStorage.getItem("hope-saved")||"[]"))}catch(e){}
+/* School edition: English only. */
+let watched=new Set();
+try{watched=new Set(JSON.parse(localStorage.getItem("hope-watched")||"[]"))}catch(e){}
+const persistW=()=>{try{localStorage.setItem("hope-watched",JSON.stringify([...watched]))}catch(e){}};
+/* each title watched cuts the remaining anxiety by 12% */
+const anxiety=n=>Math.round(100*Math.pow(.88,n));
+const persist=()=>{try{localStorage.setItem("hope-saved",JSON.stringify([...saved]))}catch(e){}};
+const key=i=>i.t+":"+i.n;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const $=id=>document.getElementById(id);
+const T=()=>I18N[state.lang];
+const title=i=>state.lang==="fr"&&i.nf?i.nf:i.n;
+const hope=i=>state.lang==="fr"&&i.hf?i.hf:i.h;
+const loc=s=>{if(state.lang!=="fr")return s;let o=String(s);for(const[a,b]of WORDS.fr)o=o.split(a).join(b);return o};
+const lastYear=i=>Math.max(...(String(i.y).match(/\d{4}/g)||[0]).map(Number));
+
+/* ---------- generated covers ---------- */
+function hash(s){let h=2166136261;for(const c of s){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return h>>>0}
+function rng(seed){let s=seed||1;return()=>((s=Math.imul(s^s>>>15,s|1)^(s+Math.imul(s^s>>>7,s|61)))>>>0)/4294967296}
+const PAL={forest:["--moss-soft","--moss"],ocean:["--teal-soft","--teal"],land:["--clay-soft","--terra"],wild:["--sprout-soft","--moss"],soil:["--clay-soft","--terra"],energy:["--gold-soft","--gold"],city:["--teal-soft","--teal"],econ:["--gold-soft","--terra"],fungi:["--clay-soft","--terra"],community:["--terra-soft","--terra"],simple:["--sprout-soft","--sprout"],youth:["--sprout-soft","--sprout"],progress:["--gold-soft","--moss"],vision:["--terra-soft","--gold"]};
+function motif(th,r,fg){
+  const f=`fill="var(${fg})"`,s=`stroke="var(${fg})"`;let o="";
+  switch(th){
+  case"forest":for(let x=-10;x<330;x+=18+r()*14){const h=40+r()*70;o+=`<path ${f} opacity="${.55+r()*.45}" d="M${x} 140 L${x+14} ${140-h} L${x+28} 140Z"/>`}break;
+  case"ocean":for(let k=0;k<5;k++){const y=40+k*22,a=6+r()*8,w=40+r()*30;let d=`M0 ${y}`,up=r()>.5;for(let x=0;x<330;x+=w){d+=` Q${x+w/2} ${y+(up?-a:a)} ${x+w} ${y}`;up=!up}o+=`<path fill="none" ${s} stroke-width="${3+k}" opacity="${.35+k*.14}" d="${d}"/>`}break;
+  case"land":case"vision":{const cx=80+r()*160;o+=`<circle cx="${cx}" cy="96" r="${34+r()*14}" ${f} opacity=".85"/>`;for(let k=0;k<3;k++){const y=96+k*16;o+=`<path ${f} opacity="${.3+k*.25}" d="M0 ${y} C80 ${y-20-r()*20} 200 ${y+10} 320 ${y-12-r()*14} V140 H0Z"/>`}if(th==="vision")o+=`<path fill="none" ${s} stroke-width="6" opacity=".5" d="M${cx-62} 96 A62 62 0 0 1 ${cx+62} 96"/>`;break}
+  case"wild":o+=`<path ${f} opacity=".45" d="M0 110 C90 80 190 120 320 92 V140 H0Z"/><path ${f} d="M0 124 C110 108 220 132 320 116 V140 H0Z"/>`;for(let k=0;k<3+r()*3;k++){const x=40+r()*240,y=24+r()*44,w=8+r()*8;o+=`<path fill="none" ${s} stroke-width="3" stroke-linecap="round" d="M${x-w} ${y} Q${x-w/2} ${y-w*.7} ${x} ${y} Q${x+w/2} ${y-w*.7} ${x+w} ${y}"/>`}break;
+  case"soil":for(let k=0;k<5;k++){const y=62+k*16;o+=`<path ${f} opacity="${.18+k*.17}" d="M0 ${y} C100 ${y-6+r()*12} 220 ${y+8-r()*16} 320 ${y} V140 H0Z"/>`}{const x=100+r()*120;o+=`<path fill="none" ${s} stroke-width="4" stroke-linecap="round" d="M${x} 64 V30"/><path ${f} d="M${x} 38 C${x-26} 30 ${x-30} 12 ${x-6} 14 C${x-2} 22 ${x} 30 ${x} 38Z"/><path ${f} d="M${x} 44 C${x+24} 38 ${x+28} 22 ${x+6} 22 C${x+2} 30 ${x} 38 ${x} 44Z"/>`}break;
+  case"energy":{const cx=90+r()*140,cy=70,R=26+r()*10;o+=`<circle cx="${cx}" cy="${cy}" r="${R}" ${f}/>`;const n=12+Math.floor(r()*8);for(let k=0;k<n;k++){const a=k/n*Math.PI*2;o+=`<path ${s} stroke-width="4" stroke-linecap="round" d="M${cx+Math.cos(a)*(R+10)} ${cy+Math.sin(a)*(R+10)} L${cx+Math.cos(a)*(R+26+r()*18)} ${cy+Math.sin(a)*(R+26+r()*18)}"/>`}break}
+  case"city":for(let x=6;x<320;x+=24+r()*18){const h=30+r()*70,w=16+r()*14;o+=`<rect x="${x}" y="${140-h}" width="${w}" height="${h}" rx="3" ${f} opacity="${.4+r()*.5}"/>`;if(r()>.45)o+=`<circle cx="${x+w+4}" cy="${118-r()*8}" r="${9+r()*6}" fill="var(--sprout)"/>`}break;
+  case"econ":{const cx=100+r()*120;o+=`<circle cx="${cx}" cy="70" r="54" fill="none" ${s} stroke-width="22" opacity=".85"/><circle cx="${cx}" cy="70" r="82" fill="none" ${s} stroke-width="3" opacity=".4"/>`;break}
+  case"fungi":{o+=`<path ${f} opacity=".3" d="M0 124 C100 116 220 130 320 120 V140 H0Z"/>`;const n=3+Math.floor(r()*3);for(let k=0;k<n;k++){const x=40+k*(240/n)+r()*30,h=30+r()*40,w=22+r()*20,y=128-h;o+=`<path fill="none" ${s} stroke-width="${5+r()*4}" stroke-linecap="round" d="M${x} 128 V${y}"/><path ${f} d="M${x-w} ${y+4} C${x-w} ${y-w*.9} ${x+w} ${y-w*.9} ${x+w} ${y+4}Z"/>`}o+=`<path fill="none" ${s} stroke-width="1.5" opacity=".45" d="M10 134 C60 128 90 138 140 132 S240 130 310 136"/>`;break}
+  case"community":for(let k=0;k<6;k++){o+=`<circle cx="${70+r()*180}" cy="${40+r()*60}" r="${22+r()*18}" ${f} opacity=".38"/>`}break;
+  case"simple":{const x=110+r()*100;o+=`<path ${f} d="M${x-70} 110 C${x-40} 20 ${x+40} 10 ${x+70} 30 C${x+50} 100 ${x-20} 130 ${x-70} 110Z" opacity=".85"/><path fill="none" stroke="var(--surface)" stroke-width="3" opacity=".7" d="M${x-60} 108 C${x-10} 80 ${x+30} 50 ${x+64} 32"/>`;break}
+  case"youth":{const x=100+r()*120;o+=`<path ${f} opacity=".35" d="M0 120 C100 108 220 128 320 114 V140 H0Z"/><path fill="none" ${s} stroke-width="5" stroke-linecap="round" d="M${x} 122 C${x} 90 ${x+4} 70 ${x} 50"/><path ${f} d="M${x} 70 C${x-44} 62 ${x-50} 30 ${x-10} 30 C${x-4} 44 ${x} 58 ${x} 70Z"/><path ${f} d="M${x+2} 58 C${x+40} 52 ${x+46} 24 ${x+12} 22 C${x+6} 34 ${x+2} 46 ${x+2} 58Z"/>`;break}
+  case"progress":{let x=30;const n=5+Math.floor(r()*3);for(let k=0;k<n;k++){const h=18+k*(90/n)+r()*8;o+=`<rect x="${x}" y="${130-h}" width="26" height="${h}" rx="4" ${f} opacity="${.35+k*.1}"/>`;x+=36}o+=`<path fill="none" ${s} stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M${x+6} 70 L${x+46} 30 M${x+28} 30 H${x+46} V48"/>`;break}
+  }
+  return o;
+}
+const coverCache=new Map();
+function cover(i){
+  const k=key(i);if(coverCache.has(k))return coverCache.get(k);
+  const ph=PHOTOS[k];if(ph){const h=`<img class="cover" src="${ph.img}" alt="" loading="lazy" decoding="async">`;coverCache.set(k,h);return h}
+  const th=i.th[0]||"vision",[bg,fg]=PAL[th]||PAL.vision,r=rng(hash(k));
+  const svg=`<svg class="cover" viewBox="0 0 320 140" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="140" fill="var(${bg})"/>${motif(th,r,fg)}</svg>`;
+  coverCache.set(k,svg);return svg;
+}
+
+/* ---------- streaming layout ---------- */
+const byKey=new Map(ITEMS.map(i=>[key(i),i]));
+const PICK_ORDER=["How to Live on Earth","Nitassinan","Yanuni","Avatar saga","Minimalism: A Documentary About the Important Things"];
+const picks=()=>ITEMS.filter(i=>i.pick).sort((a,b)=>{const x=PICK_ORDER.indexOf(a.n),y=PICK_ORDER.indexOf(b.n);return(x<0?99:x)-(y<0?99:y)});
+const metaLine=i=>[TYPE1[state.lang][i.t],loc(i.y)].map(esc).join(" · ");
+
+function tile(i){
+  const k=key(i);
+  const b=[i.pick?`<span class="badge">${T().pick}</span>`:"",i.reg?`<span class="badge qc">${i.reg==="qc"?T().qc:T().ca}</span>`:""].join("");
+  return `<button class="tile${watched.has(k)?" is-watched":""}" data-open="${esc(k)}" aria-label="${esc(title(i))}">${cover(i)}${b?`<span class="badges">${b}</span>`:""}${saved.has(k)?`<span class="saved-dot" aria-hidden="true">★</span>`:""}${watched.has(k)?`<span class="watched-chk" aria-hidden="true">✓</span>`:""}<span class="cap"><b>${esc(title(i))}</b><span>${metaLine(i)}</span></span></button>`;
+}
+
+/* rows: [id, title(html), subtitle, items, extraClass] */
+function rowDefs(){
+  const L=T(),R=[];
+  if(saved.size)R.push(["list",esc(L.rowList),"",ITEMS.filter(i=>saved.has(key(i)))]);
+  R.push(["picks",esc(L.rowPicks),"",picks()]);
+  R.push(["new",esc(L.rowNew),L.rowNewSub,ITEMS.filter(i=>lastYear(i)>=2024).sort((a,b)=>lastYear(b)-lastYear(a))]);
+  R.push(["series",esc(TYPES[state.lang].series),"",ITEMS.filter(i=>i.t==="series")]);
+  R.push(["qc",L.rowQc,L.rowQcSub,ITEMS.filter(i=>i.reg).sort((a,b)=>(a.reg==="qc"?0:1)-(b.reg==="qc"?0:1)),"qc-row"]);
+  R.push(["theme:fungi",L.rowFungi,L.rowFungiSub,ITEMS.filter(i=>i.th.includes("fungi"))]);
+  for(const th of ["wild","forest","soil","community","vision","land","ocean","energy","simple","youth","progress"]){
+    const g=ITEMS.filter(i=>i.th.includes(th));if(g.length>=5)R.push(["theme:"+th,esc(THEMES[state.lang][th]),"",g]);
+  }
+  R.push(["type:doc",esc(TYPES[state.lang].doc),"",ITEMS.filter(i=>i.t==="doc")]);
+  R.push(["type:film",esc(TYPES[state.lang].film),"",ITEMS.filter(i=>i.t==="film")]);
+  if(watched.size)R.push(["watched",esc(L.rowWatched),"",ITEMS.filter(i=>watched.has(key(i)))]);
+  return R;
+}
+function renderRows(){
+  const out=rowDefs().map(([id,h,sub,g,cls])=>{
+    if(!g.length)return"";
+    return `<section class="row ${cls||""}" aria-label="${esc(h.replace(/<[^>]+>/g,""))}">
+      <div class="row-h gut"><div><h2>${h}</h2>${sub?`<p>${esc(sub)}</p>`:""}</div>${g.length>4&&id!=="list"?`<button class="seeall" data-see="${esc(id)}">${T().seeall}</button>`:id==="list"?`<button class="seeall" data-see="list">${T().seeall}</button>`:""}</div>
+      <div class="rail"><button class="arrow l" data-scroll="-1" aria-label="Previous" hidden>‹</button><div class="scroller gut">${g.map(tile).join("")}</div><button class="arrow r" data-scroll="1" aria-label="Next">›</button></div>
+    </section>${id==="picks"?storyPromo():""}`}).join("");
+  const quotes=QUOTES.length?`<section class="row gut"><div class="row-h"><h2>${esc(T().rowQuotes)}</h2></div>${QUOTES.map(q=>`<blockquote style="margin:0;border-left:3px solid var(--terra);padding-left:16px;font-style:italic;font-size:20px">${esc(state.lang==="fr"&&q.fr?q.fr:q.text)}<br><cite class="mono" style="font-style:normal;color:var(--muted)">${esc(q.by)}</cite></blockquote>`).join("")}</section>`:"";
+  $("rows").innerHTML=out+quotes;
+  document.querySelectorAll(".scroller").forEach(sc=>{sc.addEventListener("scroll",()=>arrows(sc),{passive:true});arrows(sc)});
+}
+function arrows(sc){const r=sc.parentElement;const l=r.querySelector(".arrow.l"),rt=r.querySelector(".arrow.r");l.hidden=sc.scrollLeft<8;rt.hidden=sc.scrollLeft+sc.clientWidth>=sc.scrollWidth-8}
+
+/* billboard */
+let billTimer=null;
+function renderBill(){
+  const p=picks();if(!p.length)return;
+  const i=p[state.billIdx%p.length],k=key(i);
+  $("bill-bg").innerHTML=cover(i);
+  $("bill-in").innerHTML=`<div class="kick mono">${T().featured}</div><h1>${esc(title(i))}</h1><div class="meta mono">${metaLine(i)}${i.reg?" · "+(i.reg==="qc"?"Québec":"Canada"):""}</div><p>${esc(hope(i))}</p>
+   <div class="btns"><a class="btn primary" href="${esc(i.u)}" target="_blank" rel="noopener">▶ ${T().explore}</a><button class="btn ghost" data-open="${esc(k)}">ⓘ ${T().info}</button></div>
+   <div class="tagline">${esc(T().tagline)}</div>`;
+  $("dots").innerHTML=p.map((x,n)=>`<button data-bill="${n}" aria-label="${esc(title(x))}" aria-current="${n===state.billIdx%p.length}"></button>`).join("");
+}
+function startBill(){
+  clearInterval(billTimer);
+  if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  billTimer=setInterval(()=>{if(document.hidden||$("bill").matches(":hover,:focus-within")||$("detail").open)return;state.billIdx++;renderBill()},9000);
+}
+
+/* grid view */
+function gridItems(){
+  const v=state.view;
+  if(v==="search"){const q=state.q;return ITEMS.filter(i=>(i.n+" "+(i.nf||"")+" "+i.by+" "+i.h+" "+(i.hf||"")+" "+i.y+" "+i.th.map(t=>THEMES.en[t]+" "+THEMES.fr[t]).join(" ")).toLowerCase().includes(q))}
+  if(v==="list")return ITEMS.filter(i=>saved.has(key(i)));
+  const d=rowDefs().find(r=>r[0]===v);if(d)return d[3];
+  if(v.startsWith("type:")){const t=v.slice(5);return ITEMS.filter(i=>i.t===t)}
+  if(v.startsWith("theme:")){const t=v.slice(6);return ITEMS.filter(i=>i.th.includes(t))}
+  return ITEMS;
+}
+function gridTitle(){
+  const v=state.view;
+  if(v==="search")return `${T().results} “${esc(state.q)}”`;
+  if(v==="list")return esc(T().tabList);
+  if(v.startsWith("type:"))return esc(TYPES[state.lang][v.slice(5)]);
+  const d=rowDefs().find(r=>r[0]===v);return d?d[1]:"";
+}
+function renderGrid(){
+  let g=gridItems();
+  const isType=state.view.startsWith("type:");
+  if(isType&&state.theme)g=g.filter(i=>i.th.includes(state.theme));
+  const ths=isType?[...new Set(gridItems().flatMap(i=>i.th))]:[];
+  $("gridview").innerHTML=`<div class="gv-h"><button class="back" data-go="home">${T().back}</button><h2>${gridTitle()}</h2><span class="n">${T().titles(g.length)}</span></div>
+   ${ths.length?`<div class="chips" role="group" aria-label="Themes"><button class="chip" data-theme-k="" aria-pressed="${!state.theme}">${T().allThemes}</button>${Object.keys(THEMES.en).filter(t=>ths.includes(t)).map(t=>`<button class="chip" data-theme-k="${t}" aria-pressed="${state.theme===t}">${THEMES[state.lang][t]}</button>`).join("")}</div>`:""}
+   ${g.length?`<div class="grid">${g.map(tile).join("")}</div>`:`<div class="empty">${state.view==="list"?T().emptyList:T().empty}</div>`}`;
+}
+
+/* tabs */
+function renderTabs(){
+  const tc={};ITEMS.forEach(i=>tc[i.t]=(tc[i.t]||0)+1);
+  const tabs=[["home",T().tabHome],["story",STORY[state.lang].tab],["about",ABOUT[state.lang].tab],...Object.keys(TYPES.en).map(t=>["type:"+t,TYPES[state.lang][t]]),["list",T().tabList,saved.size]];
+  $("tabs").innerHTML=tabs.map(([v,l,c])=>`<button class="tab" data-go="${v}" ${state.view===v?'aria-current="page"':""}>${esc(l)}${c!=null?` <span class="c">${c}</span>`:""}</button>`).join("");
+}
+
+/* detail sheet */
+let openKey=null;
+function renderDetail(){
+  const i=byKey.get(openKey);if(!i)return;const k=key(i),on=saved.has(k);
+  const more=ITEMS.filter(x=>x!==i&&x.th.some(t=>t===i.th[0])).slice(0,6);
+  $("detail").innerHTML=`<div class="d-hero">${cover(i)}<button class="close" data-close aria-label="${T().close}">×</button></div>
+  <div class="d-body">
+    <div class="d-meta mono"><span class="t">${esc(TYPE1[state.lang][i.t])}</span><span>${esc(loc(i.y))}</span>${i.reg?`<span>${i.reg==="qc"?"Québec":"Canada"}</span>`:""}${i.pick?`<span>${T().pick}</span>`:""}</div>
+    <h2 id="d-title">${esc(title(i))}</h2>
+    <p class="d-by">${esc(i.by)}</p>
+    <p class="d-hope">${esc(hope(i))}</p>
+    ${i.pr?`<span class="principle" title="${T().principle}">${PRINCIPLES[state.lang][i.pr]}</span>`:""}
+    <div class="chips">${i.th.map(t=>`<button class="chip" data-go="theme:${t}">${THEMES[state.lang][t]}</button>`).join("")}</div>
+    <div class="d-btns"><a class="btn solid" href="${esc(i.u)}" target="_blank" rel="noopener">▶ ${T().explore}</a><button class="btn line watch" data-watch="${esc(k)}" aria-pressed="${watched.has(k)}">${watched.has(k)?T().isWatched:"✓ "+T().markWatch}</button><button class="btn line" data-save="${esc(k)}" aria-pressed="${on}">${on?T().onlist:T().add}</button></div>
+    ${more.length?`<div class="d-more"><h3>${T().more}</h3><div class="grid">${more.map(tile).join("")}</div></div>`:""}
+  </div>`;
+}
+function openDetail(k){openKey=k;renderDetail();const d=$("detail");if(!d.open){try{d.showModal()}catch(e){d.setAttribute("open","")}}d.scrollTop=0}
+function closeDetail(){const d=$("detail");if(d.open){try{d.close()}catch(e){d.removeAttribute("open")}}openKey=null}
+
+
+/* ---------- About this project (LOYC 205 school edition) ---------- */
+/* Text: Quentin's presentation script of 2026-11-19, typos fixed; to be reworked by Quentin. */
+const ABOUT={
+en:{tab:"About the project",kicker:"LOYC 205 · Introduction to Sustainability · Personal project",title:"Why a Hope Library",
+ dek:"A catalogue of documentaries, films and series about people already building a different future.",
+ sections:[
+ {h:"Eco-anxiety",terms:[["Eco-anxiety","a chronic fear of environmental doom (Clayton et al., 2017)."]],b:[
+  "Do any of you feel, or have you ever felt, eco-anxiety? I was also shy to admit it.",
+  "According to a 2021 study of 10,000 people aged 16 to 25 in 10 countries, 59% of young people are very or extremely worried about climate change (Hickman et al., 2021)."]},
+ {h:"Why hope goes unnoticed",b:[
+  "The climate situation is bad. But when we fall into despair or denial, we end up doing nothing, and feeling bad for not recycling properly.",
+  "Another fact: negative headlines get more clicks (Robertson et al., 2023), and a lot of reasons for hope go unnoticed."]},
+ {h:"The sustainability concept",terms:[["Sustainable development","development that “meets the needs of the present without compromising the ability of future generations to meet their own needs” (World Commission on Environment and Development, 1987, p. 43)."]],b:[
+  "From my perspective, the climate crisis has become an opportunity for humanity to unite over the wellbeing of our shared home."]},
+ {h:"The ecology principle: species interact in communities",terms:[["Ecological community","all the species living and interacting in one place. Some interactions are competition or predation; others are mutualism, where both partners benefit."]],b:[
+  "Humans are cooperative by nature (Bregman, 2020). Hardin (1968) argued that people who share a resource will end up overusing it, but Ostrom (1990) documented communities that have managed shared resources together for centuries.",
+  "What if, instead of cooperating in sharing negativity, we started cooperating in sharing hope and inspiration?",
+  "Every Québec and Canada title in the library is tagged with the ecological principle it shows: open one and look for the “Ecological principle” label."]},
+ {h:"So I built a Hope Library",b:[
+  "It is like Netflix, but hopeful. It gathers documentaries, films and series about people already building a different future.",
+  "You're going to watch TV anyway, so might as well watch something hopeful."]},
+ {h:"What it taught me",b:[
+  "In my case, learning about solutions has been the biggest cure for eco-anxiety, and it has inspired me to be part of the solution as well."]}
+ ],
+ final:"We are not defending nature. We are nature defending itself.",
+ explore:"Explore the library",refsH:"References"},
+fr:{tab:"À propos du projet",kicker:"LOYC 205 · Introduction to Sustainability · Projet personnel",title:"Pourquoi une Hope Library",
+ dek:"Un catalogue de documentaires, de films et de séries sur des gens qui bâtissent déjà un autre avenir.",
+ sections:[
+ {h:"L'écoanxiété",terms:[["Écoanxiété","une peur chronique d'un désastre environnemental (Clayton et al., 2017)."]],b:[
+  "Est-ce que certains d'entre vous ressentent, ou ont déjà ressenti, de l'écoanxiété ? Moi aussi, j'étais gêné de l'admettre.",
+  "Selon une étude de 2021 auprès de 10 000 jeunes de 16 à 25 ans dans 10 pays, 59 % des jeunes sont très ou extrêmement inquiets face aux changements climatiques (Hickman et al., 2021)."]},
+ {h:"Pourquoi l'espoir passe inaperçu",b:[
+  "La situation climatique est grave. Mais quand on tombe dans le désespoir ou le déni, on finit par ne rien faire, et par se sentir coupable de mal recycler.",
+  "Autre fait : les titres négatifs obtiennent plus de clics (Robertson et al., 2023), et beaucoup de raisons d'espérer passent inaperçues."]},
+ {h:"Le concept de durabilité",terms:[["Développement durable","un développement qui « répond aux besoins du présent sans compromettre la capacité des générations futures de répondre aux leurs » (Commission mondiale sur l'environnement et le développement, 1987)."]],b:[
+  "De mon point de vue, la crise climatique est devenue une occasion pour l'humanité de s'unir autour du bien-être de notre maison commune."]},
+ {h:"Le principe écologique : les espèces interagissent en communautés",terms:[["Communauté écologique","l'ensemble des espèces qui vivent et interagissent dans un même lieu. Certaines interactions relèvent de la compétition ou de la prédation ; d'autres du mutualisme, où les deux partenaires y gagnent."]],b:[
+  "Les humains sont coopératifs par nature (Bregman, 2020). Hardin (1968) soutenait que des gens qui partagent une ressource finissent par la surexploiter, mais Ostrom (1990) a documenté des communautés qui gèrent ensemble des ressources partagées depuis des siècles.",
+  "Et si, au lieu de coopérer pour partager du négatif, on se mettait à coopérer pour partager de l'espoir et de l'inspiration ?",
+  "Chaque titre de la rangée Québec et Canada porte le principe écologique qu'il illustre : ouvrez-en un et cherchez l'étiquette « Principe écologique »."]},
+ {h:"Alors j'ai créé une Hope Library",b:[
+  "C'est comme Netflix, mais plein d'espoir. Elle rassemble des documentaires, des films et des séries sur des gens qui bâtissent déjà un autre avenir.",
+  "Vous allez regarder la télé de toute façon, aussi bien regarder quelque chose qui donne de l'espoir."]},
+ {h:"Ce que ça m'a appris",b:[
+  "Dans mon cas, m'informer sur les solutions a été le meilleur remède à l'écoanxiété, et ça m'a donné envie de faire partie de la solution moi aussi."]}
+ ],
+ final:"Nous ne défendons pas la nature. Nous sommes la nature qui se défend.",
+ explore:"Explorer la bibliothèque",refsH:"Références"}};
+const REFERENCES=[
+ {t:"Bregman, R. (2020, May 9). The real Lord of the Flies: What happened when six boys were shipwrecked for 15 months. ",i:"The Guardian",a:". ",u:"https://www.theguardian.com/books/2020/may/09/the-real-lord-of-the-flies-what-happened-when-six-boys-were-shipwrecked-for-15-months"},
+ {t:"Clayton, S., Manning, C. M., Krygsman, K., & Speiser, M. (2017). ",i:"Mental health and our changing climate: Impacts, implications, and guidance",a:". American Psychological Association & ecoAmerica. ",u:"https://www.apa.org/news/press/releases/2017/03/mental-health-climate.pdf"},
+ {t:"Hardin, G. (1968). The tragedy of the commons. ",i:"Science, 162",a:"(3859), 1243–1248. ",u:"https://doi.org/10.1126/science.162.3859.1243"},
+ {t:"Hickman, C., Marks, E., Pihkala, P., Clayton, S., Lewandowski, R. E., Mayall, E. E., Wray, B., Mellor, C., & van Susteren, L. (2021). Climate anxiety in children and young people and their beliefs about government responses to climate change: A global survey. ",i:"The Lancet Planetary Health, 5",a:"(12), e863–e873. ",u:"https://doi.org/10.1016/S2542-5196(21)00278-3"},
+ {t:"Ostrom, E. (1990). ",i:"Governing the commons: The evolution of institutions for collective action",a:". Cambridge University Press. ",u:"https://doi.org/10.1017/CBO9780511807763"},
+ {t:"Robertson, C. E., Pröllochs, N., Schwarzenegger, K., Pärnamets, P., Van Bavel, J. J., & Feuerriegel, S. (2023). Negativity drives online news consumption. ",i:"Nature Human Behaviour, 7",a:"(5), 812–822. ",u:"https://doi.org/10.1038/s41562-023-01538-4"},
+ {t:"World Commission on Environment and Development. (1987). ",i:"Our common future",a:". Oxford University Press.",u:""}
+];
+function renderAbout(){
+  const A=ABOUT[state.lang],n=A.sections.length;
+  $("aboutview").innerHTML=`
+  <header class="a-open gut">
+    <div class="kick mono">${esc(A.kicker)}</div>
+    <h1>${esc(A.title)}</h1>
+    <p class="s-dek">${esc(A.dek)}</p>
+  </header>
+  <article class="s-body gut">
+    ${A.sections.map((c,i)=>`<section class="s-ch"><div class="s-ch-h">${sunMark(i,n)}<h2>${esc(c.h)}</h2></div>
+      ${(c.terms||[]).map(([k,d])=>`<p class="a-term"><b>${esc(k)}:</b> ${esc(d)}</p>`).join("")}
+      ${c.b.map(p=>`<p>${esc(p)}</p>`).join("")}</section>`).join("")}
+    <blockquote class="pull final"><p>${esc(A.final)}</p></blockquote>
+    <div class="s-end"><button class="btn" data-go="home">${esc(A.explore)}</button></div>
+    <section class="a-refs"><h2>${esc(A.refsH)}</h2><ol>${REFERENCES.map(r=>`<li>${esc(r.t)}<i>${esc(r.i)}</i>${esc(r.a)}${r.u?`<a href="${esc(r.u)}" target="_blank" rel="noopener">${esc(r.u)}</a>`:""}</li>`).join("")}</ol></section>
+  </article>`;
+}
+
+/* ---------- the story ---------- */
+/* blocks: string = paragraph · {q,by} = quote · {img,cap} = photo */
+const STORY_PHOTOS=[
+ {img:"img/place-magpie-river-mutehekau-shipu.webp",file:"Paddling Moisie.jpg",page:"https://commons.wikimedia.org/wiki/File:Paddling_Moisie.jpg",artist:"Lkovac at English Wikipedia",license:"CC BY-SA 3.0",label:{en:"Story opener: canoes on the Moisie River",fr:"Ouverture du récit : canots sur la rivière Moisie"}}
+];
+const STORY={
+en:{tab:"My story",kicker:"A story of hope",title:"Eco-Anxiety",dek:"The challenge our generation was handed, and why it may be the greatest chance we have ever had to heal the planet and come home to the living world.",
+ meta:"6 chapters · about 4 minutes",read:"Read the story",back:"← Back to the films",
+ promo:"Before you press play",promoSub:"Eco-anxiety is real. So is the way through it.",
+ cap0:"Canoeing the Moisie River, Côte-Nord, Québec",
+ end:"Start with one film tonight",endSub:"Every title you watch moves the sun a little closer to hope.",qr:"Share the Hope Library",qrSub:"Scan to open it on your phone",
+ chapters:[
+ {h:"The weight",b:[
+  "You close the news, put your phone down, and something stays with you. Fires, floods, species gone. A future that seems to shrink a little more every year.",
+  "That feeling has a name: eco-anxiety. In 2021, researchers asked 10,000 people aged 16 to 25, in ten countries, how they felt about climate change. 59% said they were very or extremely worried. Three in four said the future is frightening.",
+  "If you feel it too, nothing is wrong with you. You are paying attention.",
+  {q:"It is no measure of health to be well adjusted to a profoundly sick society.",by:"Jiddu Krishnamurti"}]},
+ {h:"Facing it",b:[
+  "The first instinct is to look away. Scroll past, go numb, decide it is all too big. It works for a while.",
+  {q:"Not everything that is faced can be changed, but nothing can be changed until it is faced.",by:"James Baldwin"},
+  "Every old story has the same turn. The hero has to go down into the dark place before anything can change.",
+  {q:"The cave you fear to enter holds the treasure you seek.",by:"Joseph Campbell"}]},
+ {h:"Fear or love",b:[
+  "Fear makes the world small. It asks for higher walls, someone to blame, a tighter grip on what we have. Love makes the world wide again. It reminds us that the river downstream is the same river, and that a stranger's child is a child.",
+  {q:"It's just a choice, right now, between fear and love.",by:"Bill Hicks"},
+  "This choice is never made once. We make it every morning, in small ways: how we speak about people who see things differently, how we spend an afternoon, what we let our attention feed on.",
+  {q:"See with eyes unclouded by hate.",by:"Princess Mononoke · Hayao Miyazaki"}]},
+ {h:"What we forgot",b:[
+  "For a long time we were told that wealth is a number that must keep growing.",
+  {q:"Growth for the sake of growth is the ideology of the cancer cell.",by:"Edward Abbey"},
+  "Ask anyone what makes a life good and the answer is rarely money.",
+  {q:"When the last tree is cut down, the last fish eaten and the last stream poisoned, you will realize that you cannot eat money.",by:"A saying often attributed to the Cree"},
+  "Real wealth is healthy ecosystems, clean air and water, time with family, mental health, education, biodiversity, community, trust and safety. Every item on that list grows when we care for each other and for the land.",
+  {q:"A people without the knowledge of their past history, origin and culture is like a tree without roots.",by:"Marcus Garvey"}]},
+ {h:"Our chance",b:[
+  "Every generation inherits a task. Ours is a large one: to turn an economy that eats the planet into one that feeds it. Some days that feels crushing. On others it feels like the most meaningful work anyone has ever been given.",
+  "We are the first generation to see the whole picture, through satellites, data and science, and the first with the tools to answer it. Clean energy is now the cheapest new power in most of the world. We know how to rewild land, and more people are learning from Indigenous ways of caring for it.",
+  "Damage can be undone. The ozone layer is on track to heal within our lifetimes. Farmland left to the wild fills with life again within a few years.",
+  {q:"No man ever steps in the same river twice, for it's not the same river and he's not the same man.",by:"Heraclitus"},
+  "The world is always changing, and so are we. That is the good news. Nothing about this moment is fixed.",
+  {q:"In order to design a future of positive change, we must first become experts at changing our minds.",by:"Jacque Fresco"}]},
+ {h:"Carrying hope",b:[
+  "Hope is not a feeling to wait for. It is something you practise, like a garden. Some days it grows tall. Some days it is only the decision to keep going.",
+  "Wangari Maathai, who started a movement that planted tens of millions of trees in Kenya, liked to tell an old story. A forest is burning. The big animals stand at the edge, frozen. A tiny hummingbird flies to the river, takes one drop of water in its beak and drops it on the fire, again and again. The others laugh and ask what it thinks it can do.",
+  {q:"I will be a hummingbird. I will do the best I can.",by:"Wangari Maathai"},
+  "Do one thing that is yours. Plant something, repair something, learn a skill, join people who care. Rest when you need to. Grief and joy can live in the same day.",
+  {q:"Yesterday is history, tomorrow is a mystery, but today is a gift. That is why it is called the present.",by:"Master Oogway · Kung Fu Panda"}]}
+ ],
+ final:{q:"We are not defending nature. We are nature defending itself.",by:""}},
+fr:{tab:"Notre histoire",kicker:"Un récit d'espoir",title:"L'écoanxiété",dek:"Le défi qu'a reçu notre génération, et pourquoi c'est peut-être la plus belle chance que nous ayons eue de soigner la planète et de revenir vers le vivant.",
+ meta:"6 chapitres · environ 4 minutes",read:"Lire le récit",back:"← Retour aux films",
+ promo:"Avant d'appuyer sur lecture",promoSub:"L'écoanxiété est réelle. Le chemin pour la traverser aussi.",
+ cap0:"En canot sur la rivière Moisie, Côte-Nord, Québec",
+ end:"Commencez par un film ce soir",endSub:"Chaque titre regardé rapproche un peu le soleil de l'espoir.",qr:"Partagez la Hope Library",qrSub:"Scannez pour l'ouvrir sur votre téléphone",
+ chapters:[
+ {h:"Le poids",b:[
+  "On ferme les nouvelles, on dépose le téléphone, et quelque chose reste. Des feux, des inondations, des espèces disparues. Un avenir qui semble rétrécir un peu chaque année.",
+  "Ce sentiment a un nom : l'écoanxiété. En 2021, des chercheurs ont demandé à 10 000 jeunes de 16 à 25 ans, dans dix pays, ce qu'ils ressentaient face aux changements climatiques. 59 % se disaient très ou extrêmement inquiets. Trois sur quatre trouvaient l'avenir effrayant.",
+  "Si vous le ressentez aussi, vous n'avez rien de brisé. Vous êtes attentif.",
+  {q:"Ce n'est pas un signe de bonne santé que d'être bien adapté à une société profondément malade.",by:"Jiddu Krishnamurti"}]},
+ {h:"Regarder en face",b:[
+  "Le premier réflexe est de détourner les yeux. Faire défiler, s'engourdir, se dire que c'est trop gros. Ça marche un temps.",
+  {q:"Tout ce qu'on affronte ne peut pas être changé, mais rien ne peut changer tant qu'on ne l'affronte pas.",by:"James Baldwin"},
+  "Toutes les vieilles histoires ont le même tournant. Le héros doit descendre dans le lieu sombre avant que quoi que ce soit change.",
+  {q:"La caverne où tu crains d'entrer renferme le trésor que tu cherches.",by:"Joseph Campbell"}]},
+ {h:"La peur ou l'amour",b:[
+  "La peur rapetisse le monde. Elle réclame des murs plus hauts, un coupable, une main plus serrée sur ce qu'on possède. L'amour l'élargit à nouveau. Il rappelle que la rivière en aval est la même rivière, et que l'enfant d'un inconnu est un enfant.",
+  {q:"C'est un choix, en ce moment même, entre la peur et l'amour.",by:"Bill Hicks"},
+  "Ce choix ne se fait jamais une seule fois. On le refait chaque matin, par petits gestes : la façon de parler de ceux qui pensent autrement, la façon de passer un après-midi, ce qu'on laisse nourrir notre attention.",
+  {q:"Regarde avec des yeux que la haine n'obscurcit pas.",by:"Princesse Mononoké · Hayao Miyazaki"}]},
+ {h:"Ce qu'on avait oublié",b:[
+  "Longtemps, on nous a dit que la richesse est un chiffre qui doit toujours grimper.",
+  {q:"La croissance pour la croissance, c'est l'idéologie de la cellule cancéreuse.",by:"Edward Abbey"},
+  "Demandez à n'importe qui ce qui rend une vie bonne, la réponse est rarement l'argent.",
+  {q:"Quand le dernier arbre sera abattu, le dernier poisson mangé et la dernière rivière empoisonnée, vous découvrirez que l'argent ne se mange pas.",by:"Dicton souvent attribué aux Cris"},
+  "La vraie richesse, ce sont des écosystèmes en santé, de l'air et de l'eau propres, du temps en famille, la santé mentale, l'éducation, la biodiversité, la communauté, la confiance, la sécurité. Tout ce qui est sur cette liste grandit quand on prend soin les uns des autres et du territoire.",
+  {q:"Un peuple qui ne connaît pas son histoire, ses origines et sa culture est comme un arbre sans racines.",by:"Marcus Garvey"}]},
+ {h:"Notre chance",b:[
+  "Chaque génération hérite d'une tâche. La nôtre est grande : transformer une économie qui dévore la planète en une économie qui la nourrit. Certains jours, ça écrase. D'autres jours, ça ressemble au travail le plus porteur de sens qu'on ait jamais confié à quelqu'un.",
+  "Nous sommes la première génération à voir le portrait complet, grâce aux satellites, aux données et à la science, et la première à avoir les outils pour y répondre. L'énergie propre est maintenant la source d'électricité nouvelle la moins chère presque partout dans le monde. On sait comment réensauvager des terres, et de plus en plus de gens apprennent des façons autochtones d'en prendre soin.",
+  "Les dégâts peuvent être réparés. La couche d'ozone est en voie de se rétablir de notre vivant. Une terre agricole rendue au sauvage se remplit de vie en quelques années.",
+  {q:"On ne se baigne jamais deux fois dans le même fleuve, car ce n'est plus le même fleuve, ni le même homme.",by:"Héraclite"},
+  "Le monde change sans cesse, et nous aussi. C'est la bonne nouvelle. Rien de ce moment n'est figé.",
+  {q:"Pour concevoir un avenir de changement positif, il faut d'abord devenir experts dans l'art de changer d'idée.",by:"Jacque Fresco"}]},
+ {h:"Porter l'espoir",b:[
+  "L'espoir n'est pas un sentiment qu'on attend. C'est quelque chose qui se pratique, comme un jardin. Certains jours, il pousse haut. D'autres jours, c'est seulement la décision de continuer.",
+  "Wangari Maathai, qui a lancé un mouvement ayant planté des dizaines de millions d'arbres au Kenya, aimait raconter une vieille histoire. Une forêt brûle. Les grands animaux restent figés à la lisière. Un minuscule colibri vole jusqu'à la rivière, prend une goutte d'eau dans son bec et la laisse tomber sur le feu, encore et encore. Les autres se moquent et lui demandent ce qu'il croit pouvoir faire.",
+  {q:"Je serai un colibri. Je ferai de mon mieux.",by:"Wangari Maathai"},
+  "Faites une chose qui vous appartient. Plantez, réparez, apprenez un savoir-faire, joignez des gens qui ont à cœur la même chose. Reposez-vous quand il le faut. Le deuil et la joie peuvent habiter la même journée.",
+  {q:"Hier est derrière, demain est un mystère, mais aujourd'hui est un cadeau. C'est pour ça qu'on l'appelle le présent.",by:"Maître Oogway · Kung Fu Panda"}]}
+ ],
+ final:{q:"Nous ne défendons pas la nature. Nous sommes la nature qui se défend.",by:""}}
+};
+
+function sunMark(n,total){
+  /* the sun rises a little higher with each chapter: night to day */
+  const t=n/(total-1),cy=(30-22*t).toFixed(1),r=8;
+  const col=t<.5?"var(--terra)":"var(--gold)";
+  return `<svg class="sunmark" viewBox="0 0 64 36" aria-hidden="true"><circle cx="32" cy="${cy}" r="${r}" fill="${col}"/><rect x="0" y="30" width="64" height="6" fill="var(--ground)"/><path d="M2 30H62" stroke="var(--moss)" stroke-width="2.4" stroke-linecap="round"/></svg>`;
+}
+function storyBlock(b){
+  if(typeof b==="string")return `<p>${esc(b)}</p>`;
+  if(b.q)return `<blockquote class="pull"><p>${esc(b.q)}</p><cite>${esc(b.by)}</cite></blockquote>`;
+  if(b.img)return `<figure class="s-fig"><img src="${esc(b.img)}" alt="" loading="lazy"><figcaption>${esc(b.cap)}</figcaption></figure>`;
+  return "";
+}
+function renderStory(){
+  const S=STORY[state.lang],n=S.chapters.length;
+  $("storyview").innerHTML=`
+  <header class="s-open">
+    <img class="s-open-img" src="img/place-magpie-river-mutehekau-shipu.webp" alt="">
+    <div class="s-open-in gut">
+      <div class="kick mono">${esc(S.kicker)}</div>
+      <h1>${esc(S.title)}</h1>
+      <p class="s-dek">${esc(S.dek)}</p>
+    </div>
+  </header>
+  <article class="s-body gut">
+    <nav class="s-toc" aria-label="Chapters">${S.chapters.map((c,i)=>`<a href="#story" data-ch="${i}">${sunMark(i,n)}<span>${esc(c.h)}</span></a>`).join("")}</nav>
+    ${S.chapters.map((c,i)=>`<section class="s-ch" id="ch-${i}"><div class="s-ch-h">${sunMark(i,n)}<h2>${esc(c.h)}</h2></div>${c.b.map(storyBlock).join("")}</section>`).join("")}
+    <blockquote class="pull final"><p>${esc(S.final.q).replace(/\.\s+/,".<br><span style=\"color:var(--gold)\">")+(/\.\s/.test(S.final.q)?"</span>":"")}</p>${S.final.by?`<cite>${esc(S.final.by)}</cite>`:""}</blockquote>
+    <div class="s-end"><button class="btn solid" data-go="home">▶ ${esc(S.end)}</button><p>${esc(S.endSub)}</p></div>
+    <img class="s-qr" src="img/qr.png" alt="QR code: hopelibrary.github.io" width="420" height="420">
+  </article>`;
+}
+function storyPromo(){
+  const S=STORY[state.lang];
+  return `<section class="row gut"><button class="promo" data-go="story">
+    <img src="img/place-magpie-river-mutehekau-shipu.webp" alt="">
+    <span class="promo-in"><span class="mono kick">${esc(S.kicker)} · ${esc(S.meta)}</span><b>${esc(S.title)}</b><span class="promo-sub">${esc(S.promoSub)}</span><span class="btn primary">${esc(S.read)} →</span></span>
+  </button></section>`;
+}
+
+/* eco-anxiety meter */
+let toastT=null;
+const hopeOf=n=>100-anxiety(n);
+const levelOf=h=>{const L=T().levels;return L[h<15?0:h<40?1:h<65?2:h<85?3:4]};
+function renderMeter(bump){
+  const n=watched.size,h=hopeOf(n),L=T();
+  $("m-lo").textContent=L.lo;$("m-hi").textContent=L.hi;
+  $("m-gauge").style.setProperty("--h",h);
+  $("m-val").innerHTML=`${esc(levelOf(h))}<small>${esc(L.watched(n))}</small>`;
+  const m=$("meter");m.setAttribute("aria-valuenow",h);m.setAttribute("aria-label",L.meter);m.setAttribute("aria-valuetext",`${L.hi} ${h}% · ${levelOf(h)}`);
+  if(bump){const sn=$("m-sun");sn.classList.remove("bump");void sn.offsetWidth;sn.classList.add("bump")}
+}
+function toast(msg){const t=$("toast");t.textContent=msg;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>t.hidden=true,3200)}
+
+/* view switching */
+function show(){
+  const v=state.view,home=v==="home",story=v==="story",about=v==="about";
+  $("homeview").hidden=!home;$("gridview").hidden=home||story||about;$("storyview").hidden=!story;$("aboutview").hidden=!about;
+  renderTabs();
+  if(home){renderBill();renderRows()}else if(story)renderStory();else if(about)renderAbout();else renderGrid();
+}
+function syncHash(){try{const h={story:"#story",about:"#about"}[state.view];if(h){if(location.hash!==h)location.hash=h.slice(1)}else if(location.hash==="#story"||location.hash==="#about")history.replaceState(null,"",location.pathname+location.search)}catch(e){}}
+function go(v){state.view=v;state.theme=null;if(v!=="search"){state.q="";$("q").value=""}syncHash();show();window.scrollTo({top:0})}
+function applyI18n(){
+  document.documentElement.lang=state.lang;
+  document.querySelectorAll("[data-i]").forEach(el=>el.textContent=T()[el.dataset.i]);
+  $("q").placeholder=T().search;
+  
+}
+function renderCredits(){$("credits").innerHTML=ITEMS.filter(i=>PHOTOS[key(i)]).map(i=>{const p=PHOTOS[key(i)];return `<li><b>${esc(title(i))}</b>: <a href="${esc(p.page)}" target="_blank" rel="noopener">${esc(p.file)}</a>${p.artist?" · "+esc(p.artist):""}${p.license?" · "+esc(p.license):""}</li>`}).join("")+STORY_PHOTOS.map(p=>`<li><b>${esc(p.label[state.lang])}</b>: <a href="${esc(p.page)}" target="_blank" rel="noopener">${esc(p.file)}</a> · ${esc(p.artist)} · ${esc(p.license)}</li>`).join("")}
+function renderAll(){applyI18n();renderMeter();renderCredits();show();if(openKey)renderDetail()}
+
+document.addEventListener("click",e=>{
+  const el=e.target.closest("button,a");
+  if(e.target===$("detail")){closeDetail();return}
+  if(!el)return;
+  const ds=el.dataset;
+  if(ds.ch!==undefined){e.preventDefault();const t=document.getElementById("ch-"+ds.ch);if(t)t.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});return}
+  if(el.id==="home"){go("home");return}
+  if(ds.lang){state.lang=ds.lang;try{localStorage.setItem("hope-lang",state.lang)}catch(err){}renderAll();return}
+  if(ds.open){openDetail(ds.open);return}
+  if(ds.close!==undefined){closeDetail();return}
+  if(ds.go){closeDetail();go(ds.go);return}
+  if(ds.see){go(ds.see);return}
+  if(ds.bill){state.billIdx=+ds.bill;renderBill();startBill();return}
+  if(ds.themeK!==undefined){state.theme=ds.themeK||null;renderGrid();return}
+  if(ds.scroll){const sc=el.parentElement.querySelector(".scroller");sc.scrollBy({left:+ds.scroll*sc.clientWidth*.85,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});return}
+  if(ds.watch){const k=ds.watch,before=anxiety(watched.size);
+    if(watched.has(k)){watched.delete(k);persistW();toast(T().toastUp(levelOf(hopeOf(watched.size))));renderMeter()}
+    else{watched.add(k);persistW();const after=anxiety(watched.size);toast(T().toastDown(before-after,levelOf(100-after)));renderMeter(true)}
+renderDetail();if(state.view==="home")renderRows();else renderGrid();return}
+  if(ds.save){const k=ds.save;saved.has(k)?saved.delete(k):saved.add(k);persist();renderDetail();renderTabs();if(state.view==="home")renderRows();else renderGrid();return}
+});
+$("detail").addEventListener("close",()=>{openKey=null});
+$("q").addEventListener("input",e=>{state.q=e.target.value.trim().toLowerCase();if(state.q){state.view="search";show()}else go("home")});
+window.addEventListener("resize",()=>document.querySelectorAll(".scroller").forEach(arrows));
+if(location.hash==="#story")state.view="story";
+if(location.hash==="#about")state.view="about";
+window.addEventListener("hashchange",()=>{const want=location.hash==="#story"?"story":location.hash==="#about"?"about":((state.view==="story"||state.view==="about")?"home":state.view);if(want!==state.view){state.view=want;show();window.scrollTo({top:0})}});
+renderAll();startBill();
+</script>
+
+
+<style>
+/* ===== Trim mode: mark text to remove, then hand the list to Claude ===== */
+.trim-toggle{background:none;border:1px solid var(--line);border-radius:2px;color:var(--muted);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:10px 14px;cursor:pointer;align-self:flex-start;min-height:40px}
+.trim-toggle:hover{color:var(--ink);border-color:var(--gold)}
+html.trim-on .trim-able{cursor:crosshair}
+html.trim-on .trim-able:hover{outline:1px dashed var(--terra);outline-offset:4px}
+.trim-marked{text-decoration:line-through;text-decoration-color:#E0643F;text-decoration-thickness:2px;background:rgba(224,100,63,.13);opacity:.75}
+.trim-panel{position:fixed;z-index:60;right:16px;bottom:16px;width:min(380px,calc(100vw - 32px));max-height:min(70vh,560px);display:flex;flex-direction:column;background:#FFFFFF;color:var(--ink);border:1px solid rgba(201,168,119,.4);border-radius:4px;box-shadow:0 24px 60px rgba(0,0,0,.6);font-family:var(--body);font-size:14px}
+.trim-panel header{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.trim-panel header b{font-family:var(--display);font-weight:600;font-size:20px;flex:1}
+.trim-panel .hint{margin:0;padding:10px 14px;color:var(--muted);font-size:13px;line-height:1.5;border-bottom:1px solid var(--line)}
+.trim-panel ol{list-style:none;margin:0;padding:6px 0;overflow:auto;flex:1}
+.trim-panel li{display:flex;gap:8px;align-items:flex-start;padding:8px 14px;border-bottom:1px solid rgba(58,49,40,.6)}
+.trim-panel li span{flex:1;min-width:0}
+.trim-panel li small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--glow);margin-bottom:2px}
+.trim-panel li q{display:block;color:#25352B;quotes:"“" "”";overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}
+.trim-panel li button{background:none;border:0;color:var(--muted);font-size:18px;cursor:pointer;min-width:32px;min-height:32px}
+.trim-panel li button:hover{color:var(--terra)}
+.trim-panel .acts{display:flex;flex-wrap:wrap;gap:8px;padding:12px 14px;border-top:1px solid var(--line)}
+.trim-panel .acts button{font:inherit;font-size:13px;font-weight:600;border-radius:2px;padding:9px 12px;min-height:40px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--ink)}
+.trim-panel .acts .go{background:var(--ink);border-color:var(--ink);color:#fff}
+.trim-panel .empty{padding:14px;color:var(--muted)}
+.trim-title-btn{margin-top:4px}
+</style>
+<div class="trim-panel" id="trim-panel" hidden role="dialog" aria-label="Trim mode"></div>
+<script>
+(function(){
+  const LS="hope-trim",LSON="hope-trim-on";
+  let marks=[];try{marks=JSON.parse(localStorage.getItem(LS)||"[]")}catch(e){}
+  let on=false;try{on=localStorage.getItem(LSON)==="1"}catch(e){}
+  const save=()=>{try{localStorage.setItem(LS,JSON.stringify(marks));localStorage.setItem(LSON,on?"1":"0")}catch(e){}};
+  const norm=s=>String(s||"").replace(/\s+/g," ").trim();
+  const SEL="#storyview p, #storyview blockquote, #storyview figcaption, #storyview h1, #storyview h2, .bill-in p, .bill-in .tagline, .row-h p, .row-h h2, .promo-sub, #detail .d-hope, #detail .d-by, footer p";
+  const ctx=el=>{
+    const ch=el.closest(".s-ch");if(ch){const h=ch.querySelector("h2");return "My story › "+norm(h&&h.textContent)}
+    if(el.closest("#storyview"))return "My story › opening";
+    if(el.closest("#detail")){const t=document.getElementById("d-title");return "Title › "+norm(t&&t.textContent)}
+    if(el.closest(".bill")){const h=document.querySelector(".bill-in h1");return "Billboard › "+norm(h&&h.textContent)}
+    if(el.closest(".promo"))return "Home › story banner";
+    const r=el.closest(".row");if(r){const h=r.querySelector(".row-h h2");return "Row › "+norm(h&&h.textContent).replace(/^[IVXLC]+\s*/,"")}
+    if(el.closest("footer"))return "Footer";
+    return "Page";
+  };
+  const isMarked=t=>marks.some(m=>m.text===t);
+  function paint(){
+    document.documentElement.classList.toggle("trim-on",on);
+    document.querySelectorAll(SEL).forEach(el=>{
+      if(el.closest("button,a"))return;
+      el.classList.toggle("trim-able",on);
+      el.classList.toggle("trim-marked",on&&isMarked(norm(el.textContent)));
+    });
+    const d=document.getElementById("detail");
+    if(d){let b=d.querySelector(".trim-title-btn");const t=document.getElementById("d-title");
+      if(on&&t&&!b){b=document.createElement("button");b.className="btn line trim-title-btn";b.type="button";b.dataset.trimTitle="1";(d.querySelector(".d-btns")||d).appendChild(b)}
+      if(b){if(!on||!t){b.remove()}else{const whole="[whole title] "+norm(t.textContent);const lab=isMarked(whole)?"✂ Unmark whole title":"✂ Remove whole title";if(b.textContent!==lab)b.textContent=lab}}}
+    renderPanel();
+  }
+  function renderPanel(){
+    const p=document.getElementById("trim-panel");if(!p)return;
+    p.hidden=!on;if(!on)return;
+    const list=marks.length?`<ol>${marks.map((m,n)=>`<li><span><small>${esc(m.where)}</small><q>${esc(m.text)}</q></span><button data-trim-del="${n}" aria-label="Unmark">×</button></li>`).join("")}</ol>`:`<div class="empty">Nothing marked yet.</div>`;
+    const html=`<header><b>Trim mode · ${marks.length}</b><button class="trim-toggle" data-trim-off>Exit</button></header>
+      <p class="hint">Click any paragraph or quote to mark it. To cut just part of one, select the words, then press “Mark selection”. Open a title to remove it whole. When you're done, copy the list and paste it to Claude.</p>
+      ${list}
+      <div class="acts"><button data-trim-sel>Mark selection</button><button class="go" data-trim-copy>Copy list for Claude</button>${marks.length?`<button data-trim-clear>Clear all</button>`:""}</div>`;
+    if(p.dataset.h!==html){p.innerHTML=html;p.dataset.h=html}
+  }
+  function toggleMark(text,where){
+    const i=marks.findIndex(m=>m.text===text);
+    if(i>=0)marks.splice(i,1);else marks.push({where,text});
+    save();paint();
+  }
+  function copyList(){
+    const lang=(typeof state!=="undefined"&&state.lang)||"en";
+    const txt="Remove these from the Hope Library (marked in "+(lang==="fr"?"French":"English")+"; remove the matching text in both languages):\n\n"+marks.map((m,n)=>`${n+1}. [${m.where}] "${m.text}"`).join("\n");
+    const done=()=>{if(typeof toast==="function")toast("Copied · paste it to Claude")};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,()=>fallback(txt,done))}else fallback(txt,done);
+  }
+  function fallback(txt,done){const t=document.createElement("textarea");t.value=txt;t.style.position="fixed";t.style.opacity="0";document.body.appendChild(t);t.select();try{document.execCommand("copy");done()}catch(e){prompt("Copy this:",txt)}t.remove()}
+  document.addEventListener("click",e=>{
+    const t=e.target;
+    if(t.closest("[data-trim-toggle]")){on=!on;save();paint();return}
+    if(t.closest("[data-trim-off]")){on=false;save();paint();return}
+    if(t.closest("[data-trim-copy]")){if(marks.length)copyList();return}
+    if(t.closest("[data-trim-clear]")){marks=[];save();paint();return}
+    const del=t.closest("[data-trim-del]");if(del){marks.splice(+del.dataset.trimDel,1);save();paint();return}
+    if(t.closest("[data-trim-sel]")){
+      const s=norm(window.getSelection&&window.getSelection().toString());
+      if(!s){if(typeof toast==="function")toast("Select some words first");return}
+      const node=window.getSelection().anchorNode;const el=node&&(node.nodeType===1?node:node.parentElement);
+      toggleMark(s,el?ctx(el):"Page");window.getSelection().removeAllRanges();return}
+    if(t.closest("[data-trim-title]")){const h=document.getElementById("d-title");if(h)toggleMark("[whole title] "+norm(h.textContent),"Title › "+norm(h.textContent));return}
+    if(!on)return;
+    if(t.closest("button,a,input,.trim-panel"))return;
+    const sel=window.getSelection&&window.getSelection().toString();if(sel&&sel.trim())return;
+    const el=t.closest(SEL);if(!el||el.closest("button,a"))return;
+    e.preventDefault();e.stopPropagation();
+    toggleMark(norm(el.textContent),ctx(el));
+  },true);
+  let raf=0;new MutationObserver(()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(paint)}).observe(document.body,{childList:true,subtree:true});
+  paint();
+})();
+</script>
+
+</body></html>
